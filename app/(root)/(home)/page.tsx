@@ -1,6 +1,6 @@
-import Image from "@/node_modules/next/image";
+import React from "react";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <h1 className="h1-bold flex-center">Home</h1>
@@ -31,4 +31,6 @@ export default function Home() {
       <h1 className="h1-bold flex-center">Home</h1>
     </div>
   );
-}
+};
+
+export default Home;
