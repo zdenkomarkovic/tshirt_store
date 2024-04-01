@@ -15,4 +15,8 @@ export const navbarLinks = [
     route: "/contact",
     label: "Contact",
   },
+  {
+    route: "/dashboard",
+    label: "Dashboard",
+  },
 ];
