@@ -8,6 +8,10 @@ export const navbarLinks = [
     label: "Products",
   },
   {
+    route: "/store",
+    label: "Store",
+  },
+  {
     route: "/categories",
     label: "Categories",
   },

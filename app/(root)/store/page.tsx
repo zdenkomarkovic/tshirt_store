@@ -3,8 +3,9 @@ import { getProducts } from "@/lib/actions/product.action";
 
 import React from "react";
 
-const page = async () => {
+const Store = async () => {
   let result = await getProducts();
+
   return (
     <div className="container flex flex-wrap  px-auto justify-between">
       {result.length > 0 ? (
@@ -24,4 +25,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Store;

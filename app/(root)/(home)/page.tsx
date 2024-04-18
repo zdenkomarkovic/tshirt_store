@@ -1,24 +1,13 @@
-import React from "react";
+import { UserButton } from "@clerk/nextjs";
 
 const Home = () => {
   return (
     <div>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
-      <h1 className="h1-bold flex-center">Home</h1>
+      <UserButton afterSignOutUrl="/" />
+      <h2>Home</h2>
+      <h2>Home</h2>
+      <h2>Home</h2>
+      <h2>Home</h2>
     </div>
   );
 };
