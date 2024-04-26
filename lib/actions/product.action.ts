@@ -32,9 +32,8 @@ export async function createProduct(params: CreateProductParams) {
       features,
       description,
     });
-    console.log(path);
 
-    revalidatePath(path);
+    // revalidatePath(path);
   } catch (error) {
     console.log(error);
   }
@@ -80,12 +79,12 @@ export async function editProduct(params: EditProductParams) {
     }
     product.title = title;
     product.price = price;
-    (product.discount = discount),
-      (product.stock = stock),
-      (product.image = image),
-      (product.features = features),
-      (product.description = description),
-      await product.save();
+    product.discount = discount;
+    product.stock = stock;
+    product.image = image;
+    product.features = features;
+    product.description = description;
+    await product.save();
     revalidatePath(path);
   } catch (error) {
     console.log(error);

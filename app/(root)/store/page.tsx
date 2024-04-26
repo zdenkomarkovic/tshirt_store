@@ -7,7 +7,7 @@ const Store = async () => {
   let result = await getProducts();
 
   return (
-    <div className="container flex flex-wrap  px-auto justify-between">
+    <div className="container grid grid-cols-4">
       {result.length > 0 ? (
         result.map((product) => (
           <Card

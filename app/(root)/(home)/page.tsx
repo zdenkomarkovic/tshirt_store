@@ -1,13 +1,12 @@
-import { UserButton } from "@clerk/nextjs";
+import ProductForm from "@/components/forms/ProductForm";
 
 const Home = () => {
   return (
-    <div>
-      <UserButton afterSignOutUrl="/" />
-      <h2>Home</h2>
-      <h2>Home</h2>
-      <h2>Home</h2>
-      <h2>Home</h2>
+    <div className="container">
+      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
+      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
+      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
+      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
     </div>
   );
 };

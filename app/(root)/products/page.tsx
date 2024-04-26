@@ -6,7 +6,7 @@ import React from "react";
 const page = async () => {
   let result = await getProducts();
   return (
-    <div className="container flex flex-wrap  px-auto justify-between">
+    <div className="container flex flex-wrap px-auto justify-around">
       {result.length > 0 ? (
         result.map((product) => (
           <Card
