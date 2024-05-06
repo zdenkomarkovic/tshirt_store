@@ -20,90 +20,99 @@ export const navbarLinks = [
     label: "Contact",
   },
 ];
-export const dashboardLinks = [
+export const officeOrdersLinks = [
   {
-    route: "/dashboard/orders",
+    route: "/office/orders",
     label: "Porudzbine",
   },
   {
-    route: "/dashboard/ordersAdd",
+    route: "/office/ordersAdd",
     label: "Dodajte novu porudzbinu",
   },
   {
-    route: "/dashboard/ordersExport",
+    route: "/office/ordersExport",
     label: "Izvezite porudzbine",
   },
   {
-    route: "/dashboard/productsList",
+    route: "/office/clientsList",
+    label: "Klijenti",
+  },
+];
+
+export const officeProductLinks = [
+  {
+    route: "/office/productsList",
     label: "Proizvodi",
   },
   {
-    route: "/dashboard/productAdd",
+    route: "/office/productAdd",
     label: "Dodaj proizvod",
   },
   {
-    route: "/dashboard/productsInventory",
+    route: "/office/productsInventory",
     label: "Azuriranje inventara",
   },
   {
-    route: "/dashboard/productsImport",
+    route: "/office/productsImport",
     label: "Uvoz iz fajla",
   },
   {
-    route: "/dashboard/productsExport",
+    route: "/office/productsExport",
     label: "Izvoz proizvoda",
   },
   {
-    route: "/dashboard/productsInventoryImport",
+    route: "/office/productsInventoryImport",
     label: "Uvezite zalihe i cene",
   },
   {
-    route: "/dashboard/categoryList",
+    route: "/office/categoryList",
     label: "Kategorije",
   },
 
   {
-    route: "/dashboard/brandList",
+    route: "/office/brandList",
     label: "Brands",
   },
   {
-    route: "/dashboard/characteristics",
+    route: "/office/characteristics",
     label: "Karakteristike",
   },
+];
+export const officeWebsiteLinks = [
   {
-    route: "/dashboard/clientsList",
-    label: "Klijenti",
-  },
-  {
-    route: "/dashboard/baner",
+    route: "/office/baner",
     label: "baner",
   },
   {
-    route: "/dashboard/pagesAdd",
+    route: "/office/pagesAdd",
     label: "Stranice sajta",
   },
   {
-    route: "/dashboard/scripts",
+    route: "/office/scripts",
     label: "Prilagodjene skripte",
   },
   {
-    route: "/dashboard/menuManager",
+    route: "/office/menuManager",
     label: "Menadzer menija",
   },
   {
-    route: "/dashboard/elements",
+    route: "/office/elements",
     label: "Izmenljivi elementi",
   },
   {
-    route: "/dashboard/designThema",
+    route: "/office/designThema",
     label: "Dizajn i tema",
   },
+];
+export const officePromotionLinks = [
   {
-    route: "/dashboard/kupons",
-    label: "PROMOCIJE   popust kuponi",
+    route: "/office/kupons",
+    label: "promocije popust kuponi",
   },
+];
+export const officeReportLinks = [
   {
-    route: "/dashboard/statistics",
+    route: "/office/statistics",
     label: "Izvestaji",
   },
 ];

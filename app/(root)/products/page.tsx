@@ -9,13 +9,14 @@ const page = async () => {
     <div className="container flex flex-wrap px-auto justify-around">
       {result.length > 0 ? (
         result.map((product) => (
-          <Card
-            key={product._id}
-            picture={product.image}
-            title={product.title}
-            price={product.price}
-            itemId={JSON.stringify(product.id)}
-          />
+          <div key={product._id} className="my-[50px] w-[300px] ">
+            <Card
+              picture={product.image}
+              title={product.title}
+              price={product.price}
+              itemId={JSON.stringify(product.id)}
+            />
+          </div>
         ))
       ) : (
         <h4>Nema nicega</h4>

@@ -6,6 +6,10 @@ import React from "react";
 
 const page = async ({ params }: ParamsProps) => {
   const result = await getProductById({ productId: params.id });
+  function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+  const formattedPrice = formatPrice(result?.price);
 
   return (
     <div className="container">
@@ -22,7 +26,7 @@ const page = async ({ params }: ParamsProps) => {
           </h2>
           <h3>{result?.features}</h3>
           <h3 className="text-[30px] font-bold primary-text-gradient">
-            {result?.price} RSD
+            {formattedPrice} RSD
           </h3>
 
           <AddToCart productId={result._id} />

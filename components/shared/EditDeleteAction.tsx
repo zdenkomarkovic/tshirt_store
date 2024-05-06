@@ -14,18 +14,18 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
   const pathname = usePathname();
   const router = useRouter();
   const handleEdit = () => {
-    router.push(`dashboard/productAdd/edit/${JSON.parse(itemId)}`);
+    router.push(`/office/productAdd/edit/${itemId}`);
   };
   const handleDelete = async () => {
     if (type === "Product") {
       await deleteProduct({
-        productId: JSON.parse(itemId),
+        productId: itemId,
         path: pathname,
       });
     }
   };
   return (
-    <div className="flex items-center justify-end gap-8 max-sm:w-full pr-8">
+    <div className="flex items-center justify-end gap-4 max-sm:w-full">
       {type === "Product" && (
         <Image
           src="/assets/icons/edit.svg"

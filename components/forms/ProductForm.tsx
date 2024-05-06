@@ -66,7 +66,8 @@ const ProductForm = ({ type, productDetails }: Props) => {
           path: pathname,
         });
 
-        router.push(`/products/${parsedProductDetails.id}`);
+        router.push(`/products/${parsedProductDetails._id}`);
+        // router.push("/office/productsList");
       } else {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
@@ -83,7 +84,8 @@ const ProductForm = ({ type, productDetails }: Props) => {
             path: pathname,
           });
           setUpdateImage(false);
-          router.push(`/products/${parsedProductDetails.id}`);
+          // router.push(`/products/${parsedProductDetails.id}`);
+          router.push("/office/productsList");
         } else {
           const processedValues = { ...values };
           processedValues.image = await FileParser(values.image);
@@ -98,7 +100,7 @@ const ProductForm = ({ type, productDetails }: Props) => {
             description: values.description,
             path: pathname,
           });
-          router.push("/store");
+          router.push("/office/productsList");
         }
       }
     } catch (error) {

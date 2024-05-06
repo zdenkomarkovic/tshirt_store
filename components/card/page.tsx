@@ -1,6 +1,5 @@
 "use client";
 
-import { deleteProduct, editProduct } from "@/lib/actions/product.action";
 import Image from "@/node_modules/next/image";
 import { usePathname, useRouter } from "@/node_modules/next/navigation";
 import React from "react";
@@ -19,16 +18,14 @@ const Card = ({ picture, title, price, itemId }: ProductProps) => {
   const router = useRouter();
 
   const singleProduct = () => {
-    router.push(`/products/${JSON.parse(itemId)}`);
+    router.push(`/singleProduct/${JSON.parse(itemId)}`);
   };
   return (
-    <div className=" my-[50px] w-[300px] ">
-      <div className="flex flex-col gap-3" onClick={singleProduct}>
+    <div onClick={singleProduct} className=" ">
+      <div className="flex flex-col gap-3">
         <div className="rounded-md overflow-hidden ">
-          <Image
+          <img
             src={picture}
-            width={300}
-            height={300}
             alt="product-picture"
             className=" hover:scale-110 "
           />

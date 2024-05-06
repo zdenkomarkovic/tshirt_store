@@ -7,9 +7,15 @@ import Link from "@/node_modules/next/link";
 import { usePathname } from "@/node_modules/next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import { SignedIn } from "@clerk/nextjs";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
   const pathname = usePathname();
+
+  const toggleCart = () => {
+    setCartDisplay((prev) => !prev);
+  };
+  // console.log(cartDisplay);
 
   return (
     <header className=" background-light900_dark200 light-border sticky left-0 top-0 p-3 shadow-light-300 dark:shadow-none z-10 ">
@@ -34,9 +40,13 @@ const Navbar = () => {
             );
           })}
         </div>
+        <div className="flex" onClick={toggleCart}>
+          <FiShoppingCart className="text-[20px]" />
+          (1)
+        </div>
         <div className="flex gap-6 items-center">
           <SignedIn>
-            <Link href="/nesto">Dashboard</Link>
+            <Link href="/office">Dashboard</Link>
           </SignedIn>
           <UserButton
             afterSignOutUrl="/"

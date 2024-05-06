@@ -6,7 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <main>
       <div className="flex">
         <DashboardSidebar />
-        <section className="container">
+        <section className="py-6 mx-auto">
           <div>{children}</div>
         </section>
       </div>

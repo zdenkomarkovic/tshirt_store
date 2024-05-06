@@ -71,6 +71,32 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      transformStyle: {
+        "preserve-3d": "preserve-3d",
+      },
+      perspective: {
+        "500": "1000px",
+      },
+      backgroundColor: {
+        "custom-color": "hsl(280, 40%, calc(100% - var(--abs-offset) * 50%))",
+      },
+      transform: () => ({
+        complex:
+          "rotateY(calc(var(--offset) * 50deg)) scaleY(calc(1 + var(--abs-offset) * -0.4)) translateZ(calc(var(--abs-offset) * -30rem)) translateX(calc(var(--direction) * -5rem))",
+      }),
+      filter: {
+        none: "none",
+        blur: "blur(calc(var(--abs-offset) * 1rem))",
+      },
+      transitionProperty: {
+        all: "all",
+      },
+      transitionTimingFunction: {
+        "ease-out": "ease-out",
+      },
+      transitionDuration: {
+        "300": "0.3s",
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

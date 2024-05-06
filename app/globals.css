@@ -9,6 +9,12 @@ body {
 }
 
 @layer utilities {
+  .perspective-500 {
+    perspective: 500px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
   .flex-center {
     @apply flex justify-center items-center;
   }
