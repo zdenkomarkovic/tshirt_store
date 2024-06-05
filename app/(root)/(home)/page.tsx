@@ -1,38 +1,64 @@
-import Card from "@/components/card/page";
 import Carousel from "@/components/carousel/page";
-import { getProducts } from "@/lib/actions/product.action";
-
-const CARDS = 10;
-
-// const Card = ({ title, content }) => (
-//   <div className="w-[100%] h-[100%] p-[2rem] rounded-[1rem] bg-custom-color text-justify transition-all duration-300 ease-out">
-//     <h2>{title}</h2>
-//     <p>{content}</p>
-//   </div>
-// );
+import SlideCard from "@/components/cards/slideCard/page";
+import { getSliders } from "@/lib/actions/slider.action";
+import { getVisibility } from "@/lib/actions/visibility.action";
+import { getColections } from "@/lib/actions/colection.action";
+import ColectionCard from "@/components/cards/colectionCard/page";
 
 const Home = async () => {
-  let result = await getProducts();
+  let result = await getSliders();
+  let colections = await getColections();
+  const visibleComponents = await getVisibility();
+  const slider = visibleComponents.find((item) => item.title === "Slider");
+  const colection = visibleComponents.find(
+    (item) => item.title === "Colections"
+  );
 
   return (
     <div className="container">
-      <div className="my-20 py-10 w-full h-full bg-gradient-to-r from-gray-100 to-gray-400 flex items-center justify-center overflow-hidden ">
+      <div
+        className={` border-b-4 border-primary-100 py-16 w-full h-full flex items-center justify-center overflow-hidden ${slider.hidden && "hidden"}`}
+      >
+        {" "}
         <Carousel>
-          {result.map((product, i) => (
-            <Card
+          {result.map((slide, i) => (
+            <SlideCard
               key={i}
-              picture={product.image}
-              title={product.title}
-              price={product.price}
-              itemId={JSON.stringify(product.id)}
+              picture={slide.image}
+              title={slide.title}
+              subtitle={slide.subtitle}
+              link={slide.link}
             />
           ))}
         </Carousel>
       </div>
-      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
-      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
-      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
-      <h1 className="h1-bold text-dark100_light900 text-center mt-10">Home</h1>
+      <div
+        className={` border-b-4 border-primary-100  py-16 w-full h-full grid grid-cols-3 gap-0 items-center justify-start px-[65px]  ${colection.hidden && "hidden"}`}
+      >
+        {colections.map((item) => {
+          return (
+            <ColectionCard
+              key={item._id}
+              picture={item.image}
+              title={item.title}
+              subtitle={item.subtitle}
+              link={item.link}
+            />
+          );
+        })}
+      </div>
+      <div
+        className={` border-b-4 border-primary-100  py-16 w-full h-full grid grid-cols-3 gap-0 items-center justify-start px-[65px]  ${colection.hidden && "hidden"}`}
+      >
+        <h2 className="h2-bold">Najcesce gledano</h2>
+      </div>
+      <p className="h2-bold">products</p>
+      <p>paginacija</p>
+      <p>search</p>
+      <p>pregled kategorija</p>
+      <p>single product</p>
+      <p className="h2-bold">Cart</p>
+      <p className="h2-bold">Checkout</p>
     </div>
   );
 };

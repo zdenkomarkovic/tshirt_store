@@ -3,8 +3,6 @@
 import Image from "@/node_modules/next/image";
 import { usePathname, useRouter } from "@/node_modules/next/navigation";
 import React from "react";
-import { SignedIn } from "@clerk/nextjs";
-import EditDeleteAction from "../shared/EditDeleteAction";
 
 interface ProductProps {
   picture: string;
@@ -18,7 +16,7 @@ const Card = ({ picture, title, price, itemId }: ProductProps) => {
   const router = useRouter();
 
   const singleProduct = () => {
-    router.push(`/singleProduct/${JSON.parse(itemId)}`);
+    router.push(`/products/${JSON.parse(itemId)}`);
   };
   return (
     <div onClick={singleProduct} className=" ">
@@ -37,9 +35,6 @@ const Card = ({ picture, title, price, itemId }: ProductProps) => {
           </p>
         </div>
       </div>
-      <SignedIn>
-        <EditDeleteAction type="Product" itemId={itemId} />
-      </SignedIn>
     </div>
   );
 };

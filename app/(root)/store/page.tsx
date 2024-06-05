@@ -1,4 +1,4 @@
-import Card from "@/components/card/page";
+import Card from "@/components/cards/productCard/page";
 import { getProducts } from "@/lib/actions/product.action";
 
 import React from "react";

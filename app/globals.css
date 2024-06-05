@@ -50,6 +50,10 @@ body {
   .primary-gradient {
     background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
   }
+  .primary-gradient-opacity {
+    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+    opacity: 0.8;
+  }
 
   .dark-gradient {
     background: linear-gradient(
@@ -95,16 +99,16 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888;
+  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
   border-radius: 50px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
 }
 
 /* Markdown Start */
@@ -158,14 +162,11 @@ code {
   padding-bottom: 140px;
   display: block;
 }
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #f78e39;
 }

@@ -65,7 +65,7 @@ export const officeProductLinks = [
     label: "Uvezite zalihe i cene",
   },
   {
-    route: "/office/categoryList",
+    route: "/office/category",
     label: "Kategorije",
   },
 

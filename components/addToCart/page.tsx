@@ -6,11 +6,13 @@ import { ParamsProps } from "@/lib/actions/sharedTypes";
 import { useRouter } from "@/node_modules/next/navigation";
 import React, { useState } from "react";
 
-const AddToCart = (productId: ParamsProps) => {
+interface Params {
+  productId: string;
+}
+
+const AddToCart = ({ productId }: Params) => {
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
-
-  console.log(productId);
 
   const cart = {
     quantity,

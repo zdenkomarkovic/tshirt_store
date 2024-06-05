@@ -6,14 +6,13 @@ import Image from "@/node_modules/next/image";
 import Link from "@/node_modules/next/link";
 import { usePathname } from "@/node_modules/next/navigation";
 import { UserButton } from "@clerk/nextjs";
-import { SignedIn } from "@clerk/nextjs";
 import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
   const pathname = usePathname();
 
   const toggleCart = () => {
-    setCartDisplay((prev) => !prev);
+    setCartDisplay((prev: any) => !prev);
   };
   // console.log(cartDisplay);
 
@@ -45,9 +44,8 @@ const Navbar = () => {
           (1)
         </div>
         <div className="flex gap-6 items-center">
-          <SignedIn>
-            <Link href="/office">Dashboard</Link>
-          </SignedIn>
+          <Link href="/office/productsList">Dashboard</Link>
+
           <UserButton
             afterSignOutUrl="/"
             appearance={{

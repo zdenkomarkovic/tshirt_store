@@ -2,7 +2,6 @@ import EditDeleteAction from "@/components/shared/EditDeleteAction";
 import { getProducts } from "@/lib/actions/product.action";
 import Image from "@/node_modules/next/image";
 import React from "react";
-import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
@@ -15,13 +14,18 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import ProductForm from "@/components/forms/ProductForm";
+import VisibilityAction from "@/components/shared/VisibilityAction";
+import { getCategories } from "@/lib/actions/category.action";
 
 const page = async () => {
   let result = await getProducts();
+  let categories = await getCategories();
 
   return (
     <>
       <div className="container">
+        <ProductForm categories={JSON.stringify(categories)} />
         <div>
           <Button>Svi proizvodi</Button>
           <Button>Nema u magacinu</Button>
@@ -61,7 +65,10 @@ const page = async () => {
             <TableBody>
               {result.map((product) => {
                 return (
-                  <TableRow key={product._id} className="">
+                  <TableRow
+                    key={product._id}
+                    className={`${product.hidden && "opacity-60 bg-slate-500"}`}
+                  >
                     <TableCell className="">
                       <Checkbox />
                     </TableCell>
@@ -79,8 +86,13 @@ const page = async () => {
                     <TableCell>brend</TableCell>
                     <TableCell>{product.price}</TableCell>
                     <TableCell>{product.stock}</TableCell>
-                    <TableCell>
-                      <Switch />
+                    <TableCell className="w-[135px]">
+                      <p>{product.hidden ? "Product is Hidden" : "Visible"}</p>
+                      <VisibilityAction
+                        type={"product"}
+                        itemId={product._id}
+                        visibility={product.hidden}
+                      />
                     </TableCell>
                     <TableCell className="text-right">
                       <EditDeleteAction type="Product" itemId={product._id} />
@@ -90,51 +102,6 @@ const page = async () => {
               })}
             </TableBody>
           </Table>
-
-          <table>
-            <thead>
-              <tr>
-                <th>check</th>
-                <th>slika</th>
-                <th>proizvod</th>
-                <th>kategorija</th>
-                <th>brend</th>
-                <th>cena</th>
-                <th>zalihe</th>
-                <th>vidljivost</th>
-                <th>opcije</th>
-              </tr>
-            </thead>
-            <tbody>
-              {result.map((product) => {
-                return (
-                  <tr key={product.id}>
-                    <td>check</td>
-                    <td>
-                      <Image
-                        src={product.image}
-                        width={50}
-                        height={50}
-                        alt="product-image"
-                      />
-                    </td>
-                    <td>{product.title}</td>
-                    <td>kategorija</td>
-                    <td>brend</td>
-                    <td>{product.price}</td>
-                    <td>{product.stock}</td>
-                    <td>
-                      <Switch className="bg-blue-300" />
-                    </td>
-                    <td>
-                      <EditDeleteAction type="Product" itemId={product._id} />
-                    </td>
-                  </tr>
-                );
-              })}
-              <tr></tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </>
