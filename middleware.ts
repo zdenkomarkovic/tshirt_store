@@ -4,11 +4,14 @@ export default authMiddleware({
   publicRoutes: [
     "/",
     "/products",
+    "/products/:id",
     "/store",
     "/categories",
     "/contact",
     "/office",
     "/office/productsList",
+    "/office/brand",
+    "/office/category",
   ],
 });
 

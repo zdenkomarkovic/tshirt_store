@@ -4,7 +4,7 @@ import { getProducts } from "@/lib/actions/product.action";
 import React from "react";
 
 const page = async () => {
-  let result = await getProducts();
+  let result = await getProducts("");
   const visibleProducts = result.filter((item) => !item.hidden);
   return (
     <div className="container flex flex-wrap px-auto justify-around">
@@ -16,6 +16,7 @@ const page = async () => {
               title={product.title}
               price={product.price}
               itemId={JSON.stringify(product.id)}
+              views={product.discount}
             />
           </div>
         ))

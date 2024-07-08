@@ -29,6 +29,12 @@ export const CategorySchema = z.object({
   description: z.string(),
 });
 
+export const BrandSchema = z.object({
+  title: z.string().min(5).max(100),
+  linked: z.string().optional(),
+  image: z.custom<File>().optional(),
+});
+
 export const SliderSchema = z.object({
   title: z.string().min(5).max(100),
   subtitle: z.string().optional(),

@@ -45,10 +45,6 @@ export const officeProductLinks = [
     label: "Proizvodi",
   },
   {
-    route: "/office/productAdd",
-    label: "Dodaj proizvod",
-  },
-  {
     route: "/office/productsInventory",
     label: "Azuriranje inventara",
   },
@@ -70,7 +66,7 @@ export const officeProductLinks = [
   },
 
   {
-    route: "/office/brandList",
+    route: "/office/brand",
     label: "Brands",
   },
   {

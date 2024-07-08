@@ -7,6 +7,7 @@ export interface IProduct extends Document {
   price: number;
   discount: number;
   stock: number;
+  views: number;
   image: string;
   features: string;
   description: string;
@@ -26,6 +27,7 @@ const ProductSchema = new Schema({
   // brand: { type: Schema.Types.ObjectId, ref: "Brand" },
   price: { type: Number, required: true },
   discount: { type: Number, default: 0 },
+  views: { type: Number, default: 0 },
   stock: { type: Number, default: 0 },
   image: { type: String, required: true },
   features: { type: String, required: false },
@@ -37,6 +39,7 @@ const ProductSchema = new Schema({
   metaTitle: { type: String, required: false },
   metaDescription: { type: String, required: false },
   tags: [{ type: String, required: false }],
+
   createdAt: { type: Date, default: Date.now },
 });
 const Product = models.Product || model("Product", ProductSchema);

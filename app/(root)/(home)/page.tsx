@@ -4,6 +4,8 @@ import { getSliders } from "@/lib/actions/slider.action";
 import { getVisibility } from "@/lib/actions/visibility.action";
 import { getColections } from "@/lib/actions/colection.action";
 import ColectionCard from "@/components/cards/colectionCard/page";
+import { getProducts } from "@/lib/actions/product.action";
+import Card from "@/components/cards/productCard/page";
 
 const Home = async () => {
   let result = await getSliders();
@@ -13,6 +15,9 @@ const Home = async () => {
   const colection = visibleComponents.find(
     (item) => item.title === "Colections"
   );
+  let filter = "mostViewed";
+  let products = await getProducts({ filter });
+  const visibleProducts = products.filter((product) => !product.hidden);
 
   return (
     <div className="container">
@@ -47,12 +52,28 @@ const Home = async () => {
           );
         })}
       </div>
-      <div
-        className={` border-b-4 border-primary-100  py-16 w-full h-full grid grid-cols-3 gap-0 items-center justify-start px-[65px]  ${colection.hidden && "hidden"}`}
-      >
-        <h2 className="h2-bold">Najcesce gledano</h2>
+      <div className={` border-b-4 border-primary-100  py-16 w-full h-full  `}>
+        <h2 className="h1-bold pb-16 text-center text-primary-500">
+          Najcesce gledano
+        </h2>
+        <div className="grid grid-cols-3 gap-0 items-center justify-start px-[65px]">
+          {visibleProducts.length > 0 &&
+            visibleProducts.slice(0, 3).map((product) => (
+              <div key={product._id}>
+                <Card
+                  picture={product.image}
+                  title={product.title}
+                  price={product.price}
+                  itemId={JSON.stringify(product.id)}
+                />
+              </div>
+            ))}
+        </div>
       </div>
-      <p className="h2-bold">products</p>
+
+      <p>orders</p>
+      <p>paginacija</p>
+      <p>paginacija</p>
       <p>paginacija</p>
       <p>search</p>
       <p>pregled kategorija</p>

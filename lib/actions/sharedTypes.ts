@@ -5,6 +5,7 @@ export interface CreateProductParams {
   price: number;
   discount: number;
   stock: number;
+  views: number;
   image: File[];
   features: string;
   description: string;
@@ -55,6 +56,10 @@ export interface ParamsProps {
 
 export interface GetProductByIdParams {
   productId: string;
+  views: number;
+}
+export interface GetProductsParams {
+  filter: string;
 }
 
 export interface CreateCategoryParams {
@@ -81,6 +86,28 @@ export interface EditCategoryParams {
 
 export interface GetCategoryByIdParams {
   categoryId: string;
+}
+
+export interface CreateBrandParams {
+  title: string;
+  image: File[];
+  path: string;
+}
+
+export interface DeleteBrandParams {
+  brandId: string;
+  path: string;
+}
+
+export interface EditBrandParams {
+  brandId: string;
+  title: string;
+  image: File[];
+  path: string;
+}
+
+export interface GetBrandByIdParams {
+  brandId: string;
 }
 
 export interface CreateSliderParams {

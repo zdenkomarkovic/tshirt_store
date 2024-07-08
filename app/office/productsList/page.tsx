@@ -17,15 +17,25 @@ import { Input } from "@/components/ui/input";
 import ProductForm from "@/components/forms/ProductForm";
 import VisibilityAction from "@/components/shared/VisibilityAction";
 import { getCategories } from "@/lib/actions/category.action";
+import { getTags } from "@/lib/actions/tag.action";
 
 const page = async () => {
-  let result = await getProducts();
+  let result = await getProducts("");
   let categories = await getCategories();
+  let tags = await getTags();
+
+  const categoryMap = categories.reduce((acc, category) => {
+    acc[category._id] = category.title;
+    return acc;
+  }, {});
 
   return (
     <>
       <div className="container">
-        <ProductForm categories={JSON.stringify(categories)} />
+        <ProductForm
+          categories={JSON.stringify(categories)}
+          savedTags={JSON.stringify(tags)}
+        />
         <div>
           <Button>Svi proizvodi</Button>
           <Button>Nema u magacinu</Button>
@@ -58,6 +68,7 @@ const page = async () => {
                 <TableHead>cena</TableHead>
                 <TableHead>zalihe</TableHead>
                 <TableHead>vidljivost</TableHead>
+                <TableHead>vidjeno</TableHead>
 
                 <TableHead className="text-right">opcije</TableHead>
               </TableRow>
@@ -82,7 +93,7 @@ const page = async () => {
                       />
                     </TableCell>
                     <TableCell>{product.title}</TableCell>
-                    <TableCell>kategorija</TableCell>
+                    <TableCell>{categoryMap[product.category]}</TableCell>
                     <TableCell>brend</TableCell>
                     <TableCell>{product.price}</TableCell>
                     <TableCell>{product.stock}</TableCell>
@@ -94,6 +105,7 @@ const page = async () => {
                         visibility={product.hidden}
                       />
                     </TableCell>
+                    <TableCell>{product.views}</TableCell>
                     <TableCell className="text-right">
                       <EditDeleteAction type="Product" itemId={product._id} />
                     </TableCell>

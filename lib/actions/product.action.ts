@@ -9,6 +9,7 @@ import {
   DeleteProductParams,
   EditProductParams,
   GetProductByIdParams,
+  GetProductsParams,
   ToggleProductParams,
 } from "./sharedTypes";
 
@@ -71,10 +72,22 @@ export async function createProduct(params: CreateProductParams) {
     console.log(error);
   }
 }
-export async function getProducts() {
+export async function getProducts(params: GetProductsParams) {
   try {
     connectToDatabase();
-    const products = await Product.find();
+    const { filter } = params;
+
+    let sortOptions = {};
+    switch (filter) {
+      case "mostViewed":
+        sortOptions = { views: -1 };
+        break;
+      case "":
+        sortOptions = { views: 1 };
+        break;
+    }
+
+    const products = await Product.find().sort(sortOptions);
     return products;
   } catch (error) {
     console.log(error);
@@ -124,6 +137,7 @@ export async function editProduct(params: EditProductParams) {
     product.brand = brand;
     product.price = price;
     product.discount = discount;
+
     product.stock = stock;
     product.image = image;
     product.features = features;
@@ -161,7 +175,10 @@ export async function getProductById(params: GetProductByIdParams) {
 
     const { productId } = params;
 
-    const product = await Product.findById(productId);
+    const product = await Product.findByIdAndUpdate(productId, {
+      $inc: { views: 1 },
+    });
+
     return product;
   } catch (error) {
     console.log(error);

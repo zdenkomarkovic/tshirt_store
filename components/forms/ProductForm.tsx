@@ -32,27 +32,48 @@ import {
 } from "../ui/select";
 import { Badge } from "@/components/ui/badge";
 import Image from "@/node_modules/next/image";
+import { Check, ChevronsUpDown } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+} from "../ui/command";
+import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover";
 
 interface Props {
   type?: string;
   productDetails?: string;
   categories: string;
+  savedTags: string;
 }
 
-const ProductForm = ({ type, productDetails, categories }: Props) => {
+const ProductForm = ({
+  type,
+  productDetails,
+  categories,
+  savedTags,
+}: Props) => {
   const editorRef = useRef(null);
   const [isSubmiting, setIsSubmiting] = useState(false);
   const [updateImage, setUpdateImage] = useState(false);
   let [isHidden, setIsHidden] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   const parsedProductDetails =
     productDetails && JSON.parse(productDetails || "");
+  const parsedTags = JSON.parse(savedTags || "");
 
   const groupedTags = parsedProductDetails?.tags.map((tag: any) => tag.title);
 
-  const parsedCategories = categories && JSON.parse(categories || "");
+  const parsedCategories = JSON.parse(categories || "");
 
   const form = useForm<z.infer<typeof ProductSchema>>({
     resolver: zodResolver(ProductSchema),
@@ -177,7 +198,16 @@ const ProductForm = ({ type, productDetails, categories }: Props) => {
           form.setValue("tags", [...field.value, tagValue]);
           tagInput.value = "";
           form.clearErrors("tags");
+          setOpen(false);
         }
+      }
+    }
+  };
+  const setSelectedTag = (tagValue, field) => {
+    if (tagValue !== "") {
+      if (!field.value.includes(tagValue as never)) {
+        form.setValue("tags", [...field.value, tagValue]);
+        form.clearErrors("tags");
       }
     }
   };
@@ -624,14 +654,59 @@ const ProductForm = ({ type, productDetails, categories }: Props) => {
                   </FormLabel>
                   <FormControl className="mt-2">
                     <>
-                      <Input
-                        className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-                        placeholder="Add tags..."
-                        onKeyDown={(e) => handleInputKeyDown(e, field)}
-                      />
+                      <Popover
+                        open={open}
+                        onOpenChange={setOpen}
+                        className="ml-10"
+                      >
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            role="combobox"
+                            aria-expanded={open}
+                            className="w-[200px] justify-between"
+                          >
+                            "Enter Tags...
+                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[200px] p-0">
+                          <Command>
+                            <CommandInput
+                              placeholder="Enter Tag..."
+                              onKeyDown={(e) => {
+                                handleInputKeyDown(e, field);
+                              }}
+                            />
+                            <CommandList>
+                              <CommandEmpty>No tag found.</CommandEmpty>
+                              <CommandGroup>
+                                {parsedTags.map((tag: any) => (
+                                  <CommandItem
+                                    key={tag.title}
+                                    value={tag.title}
+                                    onSelect={(currentValue: any) => {
+                                      setValue(
+                                        currentValue === value
+                                          ? ""
+                                          : currentValue
+                                      );
+                                      setSelectedTag(currentValue, field);
+                                      currentValue = "";
+                                      setOpen(false);
+                                    }}
+                                  >
+                                    {tag.title}
+                                  </CommandItem>
+                                ))}
+                              </CommandGroup>
+                            </CommandList>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
 
                       {field.value.length > 0 && (
-                        <div className="flex-start mt-2.5 gap-2.5">
+                        <div className=" flex flex-row-reverse mt-2.5 gap-2.5">
                           {field.value.map((tag: any) => (
                             <Badge
                               key={tag}

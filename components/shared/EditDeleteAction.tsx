@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteBrand } from "@/lib/actions/brand.action";
 import { deleteCategory } from "@/lib/actions/category.action";
 import { deleteColection } from "@/lib/actions/colection.action";
 import { deleteProduct } from "@/lib/actions/product.action";
@@ -52,6 +53,12 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
     if (type === "Colection") {
       await deleteColection({
         colectionId: itemId,
+        path: pathname,
+      });
+    }
+    if (type === "Brand") {
+      await deleteBrand({
+        brandId: itemId,
         path: pathname,
       });
     }

@@ -44,7 +44,13 @@ const Navbar = () => {
           (1)
         </div>
         <div className="flex gap-6 items-center">
-          <Link href="/office/productsList">Dashboard</Link>
+          <Link
+            href="/office/productsList"
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
+            Dashboard
+          </Link>
 
           <UserButton
             afterSignOutUrl="/"
