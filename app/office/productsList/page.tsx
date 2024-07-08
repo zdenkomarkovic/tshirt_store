@@ -20,7 +20,8 @@ import { getCategories } from "@/lib/actions/category.action";
 import { getTags } from "@/lib/actions/tag.action";
 
 const page = async () => {
-  let result = await getProducts("");
+  let filter = "regular";
+  let result = await getProducts({ filter });
   let categories = await getCategories();
   let tags = await getTags();
 

@@ -82,8 +82,8 @@ export async function getProducts(params: GetProductsParams) {
       case "mostViewed":
         sortOptions = { views: -1 };
         break;
-      case "":
-        sortOptions = { views: 1 };
+      case "regular":
+        sortOptions = { createdAt: 1 };
         break;
     }
 
