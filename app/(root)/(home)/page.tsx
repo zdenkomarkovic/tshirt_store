@@ -72,7 +72,6 @@ const Home = async () => {
       </div>
 
       <p>orders</p>
-      <p>paginacijaaaa</p>
       <p>paginacija</p>
       <p>paginacija</p>
       <p>paginacija</p>
