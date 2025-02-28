@@ -11,6 +11,8 @@ import {
 } from "./sharedTypes";
 
 export async function createBrand(params: CreateBrandParams) {
+  console.log(params);
+
   try {
     connectToDatabase();
     const { title, image, path } = params;
