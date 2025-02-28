@@ -54,7 +54,7 @@ const Home = async () => {
       </div>
       <div className={` border-b-4 border-primary-100  py-16 w-full h-full  `}>
         <h2 className="h1-bold pb-16 text-center text-primary-500">
-          Najcesce gledanoo
+          Najcesce gledano
         </h2>
         <div className="grid grid-cols-3 gap-0 items-center justify-start px-[65px]">
           {visibleProducts.length > 0 &&
