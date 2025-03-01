@@ -8,7 +8,7 @@ import { getProducts } from "@/lib/actions/product.action";
 import Card from "@/components/cards/productCard/page";
 
 const Home = async () => {
-  const result = await getSliders();
+  const result = (await getSliders()) || [];
   const colections = await getColections();
   const visibleComponents = await getVisibility();
   const slider =
