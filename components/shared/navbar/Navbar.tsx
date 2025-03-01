@@ -5,7 +5,6 @@ import { navbarLinks } from "@/constants/index";
 import Image from "@/node_modules/next/image";
 import Link from "@/node_modules/next/link";
 import { usePathname } from "@/node_modules/next/navigation";
-import { UserButton } from "@clerk/nextjs";
 import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
@@ -51,18 +50,6 @@ const Navbar = () => {
           >
             Dashboard
           </Link>
-
-          <UserButton
-            afterSignOutUrl="/"
-            appearance={{
-              elements: {
-                avatarBox: "h-10 w-10",
-              },
-              variables: {
-                colorPrimary: "#ff7000",
-              },
-            }}
-          />
         </div>
       </nav>
     </header>
