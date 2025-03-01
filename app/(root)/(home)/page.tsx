@@ -8,15 +8,15 @@ import { getProducts } from "@/lib/actions/product.action";
 import Card from "@/components/cards/productCard/page";
 
 const Home = async () => {
-  let result = await getSliders();
-  let colections = await getColections();
+  const result = await getSliders();
+  const colections = await getColections();
   const visibleComponents = await getVisibility();
   const slider = visibleComponents.find((item) => item.title === "Slider");
   const colection = visibleComponents.find(
     (item) => item.title === "Colections"
   );
-  let filter = "mostViewed";
-  let products = await getProducts({ filter });
+  const filter = "mostViewed";
+  const products = await getProducts({ filter });
   const visibleProducts = products.filter((product) => !product.hidden);
 
   return (

@@ -4,8 +4,8 @@ import { getProducts } from "@/lib/actions/product.action";
 import React from "react";
 
 const page = async () => {
-  let filter = "regular";
-  let result = await getProducts({ filter });
+  const filter = "regular";
+  const result = await getProducts({ filter });
   const visibleProducts = result.filter((item) => !item.hidden);
   return (
     <div className="container flex flex-wrap px-auto justify-around">

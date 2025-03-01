@@ -1,5 +1,4 @@
 import React from "react";
-export const runtime = "nodejs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

@@ -14,7 +14,7 @@ const page = async ({ params }: ParamsProps) => {
         <Link href={"/products"}>Go Back</Link>
       </div>
 
-      <div className="flex my-10 gap-20 items-start">
+      <div className="flex gap-20 items-start my-10">
         <Image
           src={result?.image}
           width={550}
