@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import CustomClerkProvider from "@/components/ClerkProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,20 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{
-        elements: {
-          formButtonPrimary: "primary-gradient",
-          footerActionLink: "",
-        },
-      }}
-    >
+    <CustomClerkProvider>
       <html lang="en">
         <body className={inter.className}>
           {children}
           <Toaster position="top-right" />
         </body>
       </html>
-    </ClerkProvider>
+    </CustomClerkProvider>
   );
 }
