@@ -14,7 +14,7 @@ export async function createCategory(params: CreateCategoryParams) {
   try {
     connectToDatabase();
     const { title, linked, image, description, path } = params;
-    const newCategory = await Category.create({
+    await Category.create({
       title,
       linked,
       image,

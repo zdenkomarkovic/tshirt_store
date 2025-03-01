@@ -14,7 +14,7 @@ export async function createSlider(params: CreateSliderParams) {
   try {
     connectToDatabase();
     const { title, subtitle, image, link, path } = params;
-    const newSlider = await Slider.create({
+    await Slider.create({
       title,
       subtitle,
       image,

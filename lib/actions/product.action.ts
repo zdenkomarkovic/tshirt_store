@@ -39,7 +39,7 @@ export async function createProduct(params: CreateProductParams) {
     const validTags = tags.filter((tag) => tag && tag.trim());
     console.log("Valid tags:", validTags); // Debugging step
 
-    const newProduct = await Product.create({
+    await Product.create({
       title,
       category,
       // brand,

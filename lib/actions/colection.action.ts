@@ -14,7 +14,7 @@ export async function createColection(params: CreateColectionParams) {
   try {
     connectToDatabase();
     const { title, subtitle, image, link, path } = params;
-    const newColection = await Colection.create({
+    await Colection.create({
       title,
       subtitle,
       image,

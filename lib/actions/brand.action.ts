@@ -16,7 +16,7 @@ export async function createBrand(params: CreateBrandParams) {
   try {
     connectToDatabase();
     const { title, image, path } = params;
-    const newBrand = await Brand.create({
+    await Brand.create({
       title,
       image,
     });

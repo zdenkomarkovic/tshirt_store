@@ -13,7 +13,7 @@ export async function createVisibility(params: CreateVisibilityParams) {
   try {
     connectToDatabase();
     const { title, hidden, path } = params;
-    const newVisibility = await Visibility.create({
+    await Visibility.create({
       title,
       hidden,
     });

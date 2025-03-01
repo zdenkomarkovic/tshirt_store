@@ -10,9 +10,11 @@ const TSHIRT_CLOUDINARY_API_KEY: string =
 const UploadProduct = () => {
   // const [state, setState] = useState("");
   // const [file, setFile] = useState<File | undefined>();
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [preview, setPreview] = useState<string | ArrayBuffer | null>();
 
-  const onDrop = useCallback((acceptedFiles: FileList) => {
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    setSelectedFiles(acceptedFiles);
     const file = new FileReader();
     file.onload = function () {
       setPreview(file.result);
@@ -23,9 +25,9 @@ const UploadProduct = () => {
 
   const handleOnSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (typeof acceptedFiles[0] === "undefined") return;
+    if (selectedFiles.length === 0) return;
     const formData = new FormData();
-    formData.append("file", acceptedFiles[0]);
+    formData.append("file", selectedFiles[0]); // Koristi prvi fajl
     formData.append("upload_preset", "tshirt-uploads-unsigned");
     formData.append("api_key", TSHIRT_CLOUDINARY_API_KEY);
 
