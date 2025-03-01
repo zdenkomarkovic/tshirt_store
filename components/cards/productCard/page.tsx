@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "@/node_modules/next/image";
 import { usePathname, useRouter } from "@/node_modules/next/navigation";
 import React from "react";
 
@@ -12,7 +11,6 @@ interface ProductProps {
 }
 
 const Card = ({ picture, title, price, itemId }: ProductProps) => {
-  const pathname = usePathname();
   const router = useRouter();
 
   const singleProduct = () => {
