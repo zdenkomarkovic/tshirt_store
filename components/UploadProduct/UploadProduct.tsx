@@ -8,7 +8,7 @@ const TSHIRT_CLOUDINARY_API_KEY: string =
   process.env.TSHIRT_CLOUDINARY_API_KEY || "";
 
 const UploadProduct = () => {
-  const [state, setState] = useState("");
+  // const [state, setState] = useState("");
   // const [file, setFile] = useState<File | undefined>();
   const [preview, setPreview] = useState<string | ArrayBuffer | null>();
 

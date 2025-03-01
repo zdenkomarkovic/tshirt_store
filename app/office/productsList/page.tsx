@@ -5,7 +5,6 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -20,10 +19,10 @@ import { getCategories } from "@/lib/actions/category.action";
 import { getTags } from "@/lib/actions/tag.action";
 
 const page = async () => {
-  let filter = "regular";
-  let result = await getProducts({ filter });
-  let categories = await getCategories();
-  let tags = await getTags();
+  const filter = "regular";
+  const result = await getProducts({ filter });
+  const categories = await getCategories();
+  const tags = await getTags();
 
   const categoryMap = categories.reduce((acc, category) => {
     acc[category._id] = category.title;
