@@ -1,7 +1,6 @@
 "use client";
 
 import { LS_CART } from "@/config/config";
-import { ParamsProps } from "@/lib/actions/sharedTypes";
 
 import { useRouter } from "@/node_modules/next/navigation";
 import React, { useState } from "react";
