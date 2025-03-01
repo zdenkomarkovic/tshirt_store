@@ -6,7 +6,10 @@ import Link from "@/node_modules/next/link";
 import React from "react";
 
 const page = async ({ params }: ParamsProps) => {
-  const result = await getProductById({ productId: params.id });
+  const result = await getProductById({
+    productId: params.id,
+    views: 0,
+  });
 
   return (
     <div className="container">

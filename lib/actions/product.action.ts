@@ -175,12 +175,17 @@ export async function getProductById(params: GetProductByIdParams) {
 
     const { productId } = params;
 
-    const product = await Product.findByIdAndUpdate(productId, {
-      $inc: { views: 1 },
-    });
-
+    const product = await Product.findByIdAndUpdate(
+      productId,
+      {
+        $inc: { views: 1 },
+      },
+      { new: true }
+    );
+    if (!product) throw new Error("Product not found");
     return product;
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching product:", error);
+    throw error;
   }
 }

@@ -56,7 +56,7 @@ export interface ParamsProps {
 
 export interface GetProductByIdParams {
   productId: string;
-  views: number;
+  views?: number;
 }
 export interface GetProductsParams {
   filter: string;
