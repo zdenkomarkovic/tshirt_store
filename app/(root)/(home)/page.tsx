@@ -11,8 +11,8 @@ const Home = async () => {
   const result = await getSliders();
   const colections = await getColections();
   const visibleComponents = await getVisibility();
-  const slider = visibleComponents.find((item) => item.title === "Slider");
-  const colection = visibleComponents.find(
+  const slider = visibleComponents?.find((item) => item.title === "Slider");
+  const colection = visibleComponents?.find(
     (item) => item.title === "Colections"
   );
   const filter = "mostViewed";
