@@ -1,4 +1,3 @@
-import SliderForm from "@/components/forms/SliderForm";
 import EditDeleteAction from "@/components/shared/EditDeleteAction";
 import { Checkbox } from "@/components/ui/checkbox";
 import {

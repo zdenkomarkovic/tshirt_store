@@ -28,7 +28,6 @@ import {
   SelectItem,
 } from "../ui/select";
 import { createCategory, editCategory } from "@/lib/actions/category.action";
-import { revalidatePath } from "@/node_modules/next/cache";
 import Link from "@/node_modules/next/link";
 
 interface Props {

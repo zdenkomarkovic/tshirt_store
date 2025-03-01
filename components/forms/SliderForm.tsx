@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { SliderSchema } from "@/lib/validations";
-import { editProduct } from "@/lib/actions/product.action";
 import { usePathname, useRouter } from "@/node_modules/next/navigation";
 import { FileParser } from "../../lib/FileParser";
 import { createSlider, editSlider } from "@/lib/actions/slider.action";
@@ -28,7 +27,6 @@ interface Props {
 }
 
 const SliderForm = ({ type, sliderDetails }: Props) => {
-  const editorRef = useRef(null);
   const [isSubmiting, setIsSubmiting] = useState(false);
   const [updateImage, setUpdateImage] = useState(false);
   const [isHidden, setIsHidden] = useState(true);

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,7 +18,6 @@ import { Button } from "../ui/button";
 import { SliderSchema } from "@/lib/validations";
 import { usePathname, useRouter } from "@/node_modules/next/navigation";
 import { FileParser } from "../../lib/FileParser";
-import { createSlider, editSlider } from "@/lib/actions/slider.action";
 import Link from "@/node_modules/next/link";
 import { createColection, editColection } from "@/lib/actions/colection.action";
 

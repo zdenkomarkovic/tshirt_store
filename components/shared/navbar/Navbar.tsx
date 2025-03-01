@@ -10,9 +10,9 @@ import { FiShoppingCart } from "react-icons/fi";
 const Navbar = () => {
   const pathname = usePathname();
 
-  const toggleCart = () => {
-    setCartDisplay((prev: any) => !prev);
-  };
+  // const toggleCart = () => {
+  //   setCartDisplay((prev: any) => !prev);
+  // };
   // console.log(cartDisplay);
 
   return (

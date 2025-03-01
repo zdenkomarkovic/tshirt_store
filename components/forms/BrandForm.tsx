@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -17,7 +17,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { usePathname, useRouter } from "@/node_modules/next/navigation";
 import { FileParser } from "../../lib/FileParser";
-import { revalidatePath } from "@/node_modules/next/cache";
 import Link from "@/node_modules/next/link";
 import { BrandSchema } from "@/lib/validations";
 import { createBrand, editBrand } from "@/lib/actions/brand.action";

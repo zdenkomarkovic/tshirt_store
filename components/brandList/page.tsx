@@ -13,7 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { getBrands } from "@/lib/actions/brand.action";
 
 const BrandList = async () => {
-  let result = await getBrands();
+  const result = await getBrands();
 
   return (
     <>

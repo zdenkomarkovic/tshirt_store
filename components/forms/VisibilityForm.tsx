@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -8,7 +8,6 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { VisibilitySchema } from "@/lib/validations";
-import { usePathname, useRouter } from "@/node_modules/next/navigation";
+import { usePathname } from "@/node_modules/next/navigation";
 import { Switch } from "../ui/switch";
 import { createVisibility } from "@/lib/actions/visibility.action";
 
@@ -27,7 +26,7 @@ interface Props {
 }
 
 const VisibilityForm = ({ type, productDetails }: Props) => {
-  let [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
   const pathname = usePathname();
 
   const parsedProductDetails =

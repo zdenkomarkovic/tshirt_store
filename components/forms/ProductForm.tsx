@@ -32,9 +32,7 @@ import {
 } from "../ui/select";
 import { Badge } from "@/components/ui/badge";
 import Image from "@/node_modules/next/image";
-import { Check, ChevronsUpDown } from "lucide-react";
-
-import { cn } from "@/lib/utils";
+import { ChevronsUpDown } from "lucide-react";
 import {
   Command,
   CommandInput,
@@ -61,7 +59,7 @@ const ProductForm = ({
   const editorRef = useRef(null);
   const [isSubmiting, setIsSubmiting] = useState(false);
   const [updateImage, setUpdateImage] = useState(false);
-  let [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -666,7 +664,7 @@ const ProductForm = ({
                             aria-expanded={open}
                             className="w-[200px] justify-between"
                           >
-                            "Enter Tags...
+                            &quot;Enter Tags...
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                           </Button>
                         </PopoverTrigger>
