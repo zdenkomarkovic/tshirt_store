@@ -5,7 +5,7 @@ import React from "react";
 
 const page = async () => {
   const filter = "regular";
-  const result = await getProducts({ filter });
+  const result = (await getProducts({ filter })) || [];
   const visibleProducts = result.filter((item) => !item.hidden);
   return (
     <div className="container flex flex-wrap px-auto justify-around">
