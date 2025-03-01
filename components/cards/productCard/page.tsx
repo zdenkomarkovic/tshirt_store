@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "@/node_modules/next/navigation";
+import { useRouter } from "@/node_modules/next/navigation";
 import React from "react";
 
 interface ProductProps {
