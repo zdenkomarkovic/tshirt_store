@@ -6,7 +6,7 @@ import React from "react";
 
 const page = async ({ params }: ParamsProps) => {
   const result = await getProductById({ productId: params.id });
-  function formatPrice(price) {
+  function formatPrice(price: number) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
   const formattedPrice = formatPrice(result?.price);
