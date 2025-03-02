@@ -40,7 +40,9 @@ interface Props {
 //   linked: string;
 //   description: string;
 // }
-// t
+// interface ProcessedValues {
+//   image: (string | File)[];
+// }
 const CategoryForm = ({ type, categoryDetails }: Props) => {
   const editorRef = useRef(null);
   const [isSubmiting, setIsSubmiting] = useState(false);
@@ -49,8 +51,9 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const parsedCategoryDetails =
-    categoryDetails && JSON.parse(categoryDetails || "");
+  const parsedCategoryDetails = categoryDetails
+    ? JSON.parse(categoryDetails)
+    : null;
 
   const form = useForm<z.infer<typeof CategorySchema>>({
     resolver: zodResolver(CategorySchema),
@@ -67,48 +70,59 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
     setIsSubmiting(true);
     try {
-      let processedValues = { ...values, linked: values.linked || "" };
-
-      if (updateImage) {
-        const parsedImage = await FileParser(values.image);
-
-        // Osiguraj da je parsedImage validan tip (string | File)[]
-        if (parsedImage instanceof File) {
-          processedValues.image = [parsedImage];
-        } else if (typeof parsedImage === "string") {
-          processedValues.image = [parsedImage];
-        } else {
-          processedValues.image = [];
-        }
-      } else {
-        processedValues.image = Array.isArray(values.image)
-          ? values.image
-          : values.image
-          ? [values.image]
-          : [];
-      }
-
-      if (type === "Edit") {
+      if (type === "Edit" && !updateImage) {
+        const processedValues = { ...values };
+        processedValues.linked = processedValues.linked || "";
         await editCategory({
           categoryId: parsedCategoryDetails._id,
           title: values.title,
           linked: processedValues.linked,
-          image: processedValues.image,
+          image: values.image ? [values.image] : [],
           description: values.description,
           path: pathname,
         });
-        setUpdateImage(false);
+        router.push("/office/category");
       } else {
-        await createCategory({
-          title: values.title,
-          linked: processedValues.linked,
-          image: processedValues.image,
-          description: values.description,
-          path: pathname,
-        });
-      }
+        if (type === "Edit" && updateImage) {
+          const processedValues = { ...values };
+          const parsedImage = await FileParser(values.image as File | File[]);
+          processedValues.image = Array.isArray(parsedImage)
+            ? parsedImage
+            : parsedImage
+              ? [parsedImage]
+              : [];
+          processedValues.linked = processedValues.linked || "";
+          await editCategory({
+            categoryId: parsedCategoryDetails._id,
+            title: values.title,
+            linked: processedValues.linked,
+            image: processedValues.image,
+            description: values.description,
+            path: pathname,
+          });
+          setUpdateImage(false);
+          router.push("/office/category");
+        } else {
+          const processedValues = { ...values };
+          const parsedImage = await FileParser(values.image as File | File[]);
+          processedValues.image = Array.isArray(parsedImage)
+            ? parsedImage
+            : parsedImage
+              ? [parsedImage]
+              : [];
+          processedValues.linked = processedValues.linked || "";
 
-      router.push("/office/category");
+          await createCategory({
+            title: values.title,
+            linked: processedValues.linked,
+            image: processedValues.image,
+            description: values.description,
+            path: pathname,
+          });
+
+          router.push("/office/category");
+        }
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -116,7 +130,6 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
       form.reset();
     }
   }
-};
   return (
     <>
       <button
