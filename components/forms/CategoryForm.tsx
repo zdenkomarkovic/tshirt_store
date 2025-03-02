@@ -67,6 +67,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
     },
   });
 
+  interface ProcessedValues {
+    image: (string | File)[];
+    linked: string;
+  }
+
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
     setIsSubmiting(true);
     try {
@@ -84,7 +89,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         router.push("/office/category");
       } else {
         if (type === "Edit" && updateImage) {
-          const processedValues = { ...values };
+          const processedValues: ProcessedValues = {
+            ...values,
+            image: [],
+            linked: values.linked || "",
+          };
           let parsedImage: File[] | string[] = [];
           if (Array.isArray(values.image)) {
             parsedImage = await Promise.all(
@@ -99,7 +108,8 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
               typeof values.image === "string" ? [values.image] : [];
           }
 
-          processedValues.image = parsedImage;
+          processedValues.image =
+            parsedImage.length > 0 ? [parsedImage[0]] : [];
 
           processedValues.linked = processedValues.linked || "";
           await editCategory({
@@ -113,7 +123,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
           setUpdateImage(false);
           router.push("/office/category");
         } else {
-          const processedValues = { ...values };
+          const processedValues: ProcessedValues = {
+            ...values,
+            image: [],
+            linked: values.linked || "",
+          };
           let parsedImage: File[] | string[] = [];
           if (Array.isArray(values.image)) {
             parsedImage = await Promise.all(
@@ -128,7 +142,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
               typeof values.image === "string" ? [values.image] : [];
           }
 
-          processedValues.image = parsedImage;
+          processedValues.image = Array.isArray(parsedImage) ? parsedImage : [];
           processedValues.linked = processedValues.linked || "";
 
           await createCategory({
