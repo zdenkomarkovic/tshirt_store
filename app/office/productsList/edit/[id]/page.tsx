@@ -7,8 +7,10 @@ import React from "react";
 
 const page = async ({ params }: ParamsProps) => {
   const result = await getProductById({ productId: params.id });
-  const categories = await getCategories() || [];
-  const savedTags = await getTags() || [];
+  const categories = await getCategories();
+  const savedTags = await getTags();
+  const safeCategories = categories || [];
+  const safeSavedTags = savedTags || [];
 
   return (
     <>
@@ -18,8 +20,8 @@ const page = async ({ params }: ParamsProps) => {
         <ProductForm
           type="Edit"
           productDetails={result}
-          categories={JSON.stringify(categories)}  {/* Convert to string */}
-          savedTags={JSON.stringify(savedTags)} 
+          categories={JSON.stringify(safeCategories)}  {/* Convert to string */}
+          savedTags={JSON.stringify(safeSavedTags)} 
         />
       </div>
     </>
