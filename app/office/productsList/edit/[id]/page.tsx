@@ -3,6 +3,7 @@ import { getProductById } from "@/lib/actions/product.action";
 import { ParamsProps } from "@/lib/actions/sharedTypes";
 import { getTags } from "@/lib/actions/tag.action";
 import React from "react";
+import ProductForm from "../../../../../components/forms/ProductForm";
 
 const page = async ({ params }: ParamsProps) => {
   // Pozivanje asinhronih funkcija

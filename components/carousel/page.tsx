@@ -36,7 +36,7 @@ const Carousel = ({ children }: CarouselProps) => {
       `}</style>
       <div className="perspective-500 preserve-3d relative h-[30rem] w-[800px]">
         <button
-          className="absolute top-1/2 z-10 -translate-x-[270px] -translate-y-1/2 cursor-pointer select-none text-[5rem] text-gray-600"
+          className="absolute top-1/2 z-10 -translate-y-1/2 translate-x-[-270px] cursor-pointer select-none text-[5rem] text-gray-600"
           onClick={handlePrev}
         >
           <TiChevronLeftOutline />
