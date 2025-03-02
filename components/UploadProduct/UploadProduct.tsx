@@ -95,7 +95,6 @@ const UploadProduct = () => {
               alt="Preview"
             />
           )}
-          {typeof preview === "string" && <img src={preview} alt="preview" />}
 
           <div {...getRootProps()}>
             <input {...getInputProps()} />

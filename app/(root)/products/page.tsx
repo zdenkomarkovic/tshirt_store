@@ -8,7 +8,7 @@ const page = async () => {
   const result = (await getProducts({ filter })) || [];
   const visibleProducts = result.filter((item) => !item.hidden);
   return (
-    <div className="px-auto container flex flex-wrap justify-around">
+    <div className="container mx-auto flex flex-wrap justify-around">
       {visibleProducts.length > 0 ? (
         visibleProducts.map((product) => (
           <div key={product._id} className={`my-[50px] w-[300px]`}>

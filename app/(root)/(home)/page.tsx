@@ -22,7 +22,7 @@ const Home = async () => {
   return (
     <div className="container">
       <div
-        className={`flex h-full w-full items-center justify-center overflow-hidden border-b-4 border-primary-100 py-16 ${slider.hidden && "hidden"}`}
+        className={`flex size-full items-center justify-center overflow-hidden border-b-4 border-primary-100 py-16 ${slider.hidden && "hidden"}`}
       >
         {" "}
         <Carousel>
@@ -38,7 +38,7 @@ const Home = async () => {
         </Carousel>
       </div>
       <div
-        className={`grid h-full w-full grid-cols-3 items-center justify-start gap-0 border-b-4 border-primary-100 px-[65px] py-16 ${colection.hidden && "hidden"}`}
+        className={`grid size-full grid-cols-3 items-center justify-start gap-0 border-b-4 border-primary-100 px-[65px] py-16 ${colection.hidden && "hidden"}`}
       >
         {colections.map((item) => {
           return (
@@ -52,7 +52,7 @@ const Home = async () => {
           );
         })}
       </div>
-      <div className={`h-full w-full border-b-4 border-primary-100 py-16`}>
+      <div className={`size-full border-b-4 border-primary-100 py-16`}>
         <h2 className="h1-bold pb-16 text-center text-primary-500">
           Najcesce gledano
         </h2>
