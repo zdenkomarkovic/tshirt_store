@@ -66,7 +66,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
           categoryId: parsedCategoryDetails._id,
           title: values.title,
           linked: processedValues.linked,
-          image: values.image,
+          image: processedValues.image,
           description: values.description,
           path: pathname,
         });
