@@ -87,7 +87,7 @@ const UploadProduct = () => {
             multiple
           /> */}
           <Image
-            src={preview}
+            src={preview as string}
             width={100}
             height={100}
             className={`${preview ? "" : "hidden"}`}
