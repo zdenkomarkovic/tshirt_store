@@ -21,8 +21,8 @@ import { getTags } from "@/lib/actions/tag.action";
 const page = async () => {
   const filter = "regular";
   const result = await getProducts({ filter });
-  const categories = await getCategories();
-  const tags = await getTags();
+  const categories = (await getCategories()) || [];
+  const tags = (await getTags()) || [];
 
   const categoryMap = categories.reduce((acc, category) => {
     acc[category._id] = category.title;
