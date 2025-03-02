@@ -44,13 +44,14 @@ const BrandForm = ({ type, brandDetails }: Props) => {
   });
 
   async function onSubmit(values: z.infer<typeof BrandSchema>) {
+    const imageFiles = values.image ? [values.image] : [];
     setIsSubmiting(true);
     try {
       if (type === "Edit" && !updateImage) {
         await editBrand({
           brandId: parsedBrandDetails._id,
           title: values.title,
-          image: values.image,
+          image: imageFiles,
           path: pathname,
         });
         router.push("/office/brand");
