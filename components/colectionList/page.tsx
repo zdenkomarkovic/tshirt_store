@@ -9,6 +9,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { getColections } from "@/lib/actions/colection.action";
+import Image from "@/node_modules/next/image";
 import Link from "@/node_modules/next/link";
 import React from "react";
 import ColectionForm from "../forms/ColectionForm";
@@ -46,7 +47,7 @@ const ColectionList = async () => {
                     </TableCell>
                     <TableCell>
                       {" "}
-                      <img
+                      <Image
                         src={colection.image}
                         width={50}
                         height={50}

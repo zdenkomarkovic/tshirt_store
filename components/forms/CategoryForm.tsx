@@ -34,12 +34,12 @@ interface Props {
   type?: string;
   categoryDetails?: string;
 }
-interface FormValues {
-  image: string[]; // Ovdje menjaš tip u niz stringova
-  title: string;
-  linked: string;
-  description: string;
-}
+// interface FormValues {
+//   image: string[]; // Ovdje menjaš tip u niz stringova
+//   title: string;
+//   linked: string;
+//   description: string;
+// }
 const CategoryForm = ({ type, categoryDetails }: Props) => {
   const editorRef = useRef(null);
   const [isSubmiting, setIsSubmiting] = useState(false);
