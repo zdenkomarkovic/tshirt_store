@@ -3,7 +3,7 @@ import { getCategories } from "@/lib/actions/category.action";
 import { getTags } from "@/lib/actions/tag.action";
 import React from "react";
 
-const page = () => {
+const page = async () => {
   const categories = await getCategories();
   const savedTags = await getTags();
   return (
