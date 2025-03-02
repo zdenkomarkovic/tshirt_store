@@ -8,7 +8,7 @@ import { getVisibility } from "@/lib/actions/visibility.action";
 import React from "react";
 
 const page = async () => {
-  const visibleComponents = await getVisibility();
+  const visibleComponents = (await getVisibility()) || [];
   const slider = visibleComponents.find((item: any) => item.title === "Slider");
   const colections = visibleComponents.find(
     (item: any) => item.title === "Colections"
