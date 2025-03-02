@@ -1,11 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 
 const MAX_VISIBILITY = 3;
 
-const Carousel = ({ children }) => {
+interface CarouselProps {
+  children: ReactNode;
+}
+
+const Carousel = ({ children }: CarouselProps) => {
   const [active, setActive] = useState(2);
 
   const count = React.Children.count(children);
