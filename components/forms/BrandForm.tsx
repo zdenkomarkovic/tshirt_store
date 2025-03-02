@@ -58,7 +58,9 @@ const BrandForm = ({ type, brandDetails }: Props) => {
       } else {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
-          processedValues.image = await FileParser(values.image);
+          processedValues.image = (await FileParser(values.image)) as
+            | File
+            | undefined;
           await editBrand({
             brandId: parsedBrandDetails._id,
             title: values.title,
