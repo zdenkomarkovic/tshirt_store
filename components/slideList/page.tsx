@@ -10,6 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { getSliders } from "@/lib/actions/slider.action";
+import Image from "@/node_modules/next/image";
 import Link from "@/node_modules/next/link";
 import React from "react";
 
@@ -46,7 +47,7 @@ const SlideList = async () => {
                     </TableCell>
                     <TableCell>
                       {" "}
-                      <img
+                      <Image
                         src={slider.image}
                         width={50}
                         height={50}
