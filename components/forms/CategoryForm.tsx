@@ -75,10 +75,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
           const parsedImage = await FileParser(values.image);
-          if (parsedImage && typeof parsedImage === "string") {
-            processedValues.image = [parsedImage]; // Postavi URL ili putanju kao niz
+          if (typeof parsedImage === "string") {
+            // Ako je parsedImage string (base64 kodirana slika), postavi ga u niz
+            processedValues.image = [parsedImage];
           } else {
-            processedValues.image = []; // Ako nema slike, postavi prazno
+            processedValues.image = []; // Ako nije string, postavi prazno
           }
           processedValues.linked = processedValues.linked || "";
           await editCategory({
