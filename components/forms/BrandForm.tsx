@@ -71,7 +71,9 @@ const BrandForm = ({ type, brandDetails }: Props) => {
           router.push("/office/brand");
         } else {
           const processedValues = { ...values };
-          processedValues.image = await FileParser(values.image);
+          processedValues.image = (await FileParser(values.image)) as
+            | File
+            | undefined;
 
           await createBrand({
             title: values.title,
