@@ -86,12 +86,16 @@ const UploadProduct = () => {
             onChange={handleOnChange}
             multiple
           /> */}
-          <Image
-            src={preview as string}
-            width={100}
-            height={100}
-            className={`${preview ? "" : "hidden"}`}
-          />
+          {typeof preview === "string" && (
+            <Image
+              src={preview}
+              width={100}
+              height={100}
+              className={`${preview ? "" : "hidden"}`}
+              alt="Preview"
+            />
+          )}
+
           <img src={preview} alt="" />
           <div {...getRootProps()}>
             <input {...getInputProps()} />
