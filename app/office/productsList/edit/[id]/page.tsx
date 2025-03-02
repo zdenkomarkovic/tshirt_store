@@ -22,8 +22,8 @@ const page = async ({ params }: ParamsProps) => {
         <ProductForm
           type="Edit"
           productDetails={result}
-          categories={JSON.stringify(safeCategories)} // Convert to string
-          savedTags={JSON.stringify(safeSavedTags)} // Convert to string
+          categories={safeCategories} // Convert to string
+          savedTags={safeSavedTags} // Convert to string
         />
       </div>
     </>
