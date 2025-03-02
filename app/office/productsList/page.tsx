@@ -32,10 +32,7 @@ const page = async () => {
   return (
     <>
       <div className="container">
-        <ProductForm
-          categories={JSON.stringify(categories)}
-          savedTags={JSON.stringify(tags)}
-        />
+        <ProductForm categories={categories} savedTags={tags} />
         <div>
           <Button>Svi proizvodi</Button>
           <Button>Nema u magacinu</Button>
