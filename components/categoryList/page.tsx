@@ -5,7 +5,7 @@ import EditDeleteAction from "../shared/EditDeleteAction";
 import { Switch } from "../ui/switch";
 
 const CategoryList = async () => {
-  const result = await getCategories();
+  const result = (await getCategories()) || [];
 
   return (
     <div>
