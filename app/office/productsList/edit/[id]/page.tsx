@@ -1,4 +1,3 @@
-import ProductForm from "@/components/forms/ProductForm";
 import { getCategories } from "@/lib/actions/category.action";
 import { getProductById } from "@/lib/actions/product.action";
 import { ParamsProps } from "@/lib/actions/sharedTypes";
@@ -22,8 +21,8 @@ const page = async ({ params }: ParamsProps) => {
         <ProductForm
           type="Edit"
           productDetails={result}
-          categories={JSON.stringify(safeCategories)}  {/* Convert to string */}
-          savedTags={JSON.stringify(safeSavedTags)}  {/* Convert to string */}
+          categories={JSON.stringify(safeCategories)} // Convert to string
+          savedTags={JSON.stringify(safeSavedTags)} // Convert to string
         />
       </div>
     </>
