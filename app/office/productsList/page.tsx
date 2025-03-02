@@ -78,7 +78,7 @@ const page = async () => {
                 return (
                   <TableRow
                     key={product._id}
-                    className={`${product.hidden && "opacity-60 bg-slate-500"}`}
+                    className={`${product.hidden && "bg-slate-500 opacity-60"}`}
                   >
                     <TableCell className="">
                       <Checkbox />

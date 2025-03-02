@@ -36,7 +36,7 @@ const UploadProduct = () => {
       {
         method: "POST",
         body: formData,
-      }
+      },
     ).then((res) => res.json());
     console.log(results);
   };
@@ -54,18 +54,18 @@ const UploadProduct = () => {
   // };
 
   return (
-    <div className="w-[600px] border rounded-lg mx-auto my-[50px] py-[50px]  ">
+    <div className="mx-auto my-[50px] w-[600px] rounded-lg border py-[50px]">
       <h3 className="h2-bold text-center">Add the product</h3>
       <form
         onSubmit={handleOnSubmit}
-        className=" w-[450px] mx-auto flex flex-col gap-6 "
+        className="mx-auto flex w-[450px] flex-col gap-6"
       >
         <div className="flex flex-col gap-2">
           <label className="base-medium">Title:</label>
           <input
             type="text"
             name="title"
-            className="border rounded-md base-medium py-[5px] px-[15px]"
+            className="base-medium rounded-md border px-[15px] py-[5px]"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -73,7 +73,7 @@ const UploadProduct = () => {
           <input
             type="text"
             name="description"
-            className="border rounded-md base-medium py-[5px] px-[15px]"
+            className="base-medium rounded-md border px-[15px] py-[5px]"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -110,7 +110,7 @@ const UploadProduct = () => {
           </div>
         </div>
         <div className="">
-          <button className="primary-gradient rounded-md text-light-900 base-medium py-[5px] px-[15px]">
+          <button className="primary-gradient base-medium rounded-md px-[15px] py-[5px] text-light-900">
             Submit
           </button>
         </div>

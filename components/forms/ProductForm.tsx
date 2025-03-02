@@ -192,7 +192,7 @@ const ProductForm = ({
 
   const handleInputKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
-    field: any
+    field: any,
   ) => {
     if (e.key === "Enter" && field.name === "tags") {
       e.preventDefault();
@@ -227,7 +227,7 @@ const ProductForm = ({
   return (
     <>
       <button
-        className={` p-2 m-8 text-center primary-gradient text-light-900 rounded-lg ${type && "hidden"} `}
+        className={`primary-gradient m-8 rounded-lg p-2 text-center text-light-900 ${type && "hidden"} `}
         onClick={() => setIsHidden((prev) => !prev)}
       >
         {isHidden ? "Create Product" : "Hide form"}
@@ -236,7 +236,7 @@ const ProductForm = ({
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex  flex-col gap-5 w-[900px] border p-10 rounded-lg mx-auto"
+            className="mx-auto flex w-[900px] flex-col gap-5 rounded-lg border p-10"
           >
             <div className="flex gap-5">
               <FormField
@@ -258,7 +258,7 @@ const ProductForm = ({
                   </FormItem>
                 )}
               />
-              <div className="flex gap-5 w-full">
+              <div className="flex w-full gap-5">
                 <FormField
                   control={form.control}
                   name="category"
@@ -518,18 +518,18 @@ const ProductForm = ({
                 </FormItem>
               )}
             />
-            <div className="flex gap-5  ">
+            <div className="flex gap-5">
               <FormField
                 control={form.control}
                 name="hidden"
                 render={({ field }: any) => (
-                  <FormItem className="flex  flex-col items-center">
+                  <FormItem className="flex flex-col items-center">
                     <FormLabel className="paragraph-semibold text-dark400_light800">
                       Visible
                     </FormLabel>
                     <FormControl className="mt-3.5">
                       <Switch
-                        className={` ${field.value ? "bg-slate-300" : "primary-gradient"} scale-90 `}
+                        className={` ${field.value ? "bg-slate-300" : "primary-gradient"} scale-90`}
                         checked={!field.value}
                         onCheckedChange={field.onChange}
                       />
@@ -549,7 +549,7 @@ const ProductForm = ({
                     </FormLabel>
                     <FormControl className="mt-3.5">
                       <Switch
-                        className={` ${field.value ? "primary-gradient" : "bg-slate-300"} scale-90 `}
+                        className={` ${field.value ? "primary-gradient" : "bg-slate-300"} scale-90`}
                         checked={field.value}
                         onCheckedChange={field.onChange}
                       />
@@ -696,7 +696,7 @@ const ProductForm = ({
                                       setValue(
                                         currentValue === value
                                           ? ""
-                                          : currentValue
+                                          : currentValue,
                                       );
                                       setSelectedTag(currentValue, field);
                                       currentValue = "";
@@ -713,7 +713,7 @@ const ProductForm = ({
                       </Popover>
 
                       {field.value.length > 0 && (
-                        <div className=" flex flex-row-reverse mt-2.5 gap-2.5">
+                        <div className="mt-2.5 flex flex-row-reverse gap-2.5">
                           {field.value.map((tag: any) => (
                             <Badge
                               key={tag}

@@ -34,9 +34,9 @@ const Carousel = ({ children }: CarouselProps) => {
           transition: all 0.3s ease-out;
         }
       `}</style>
-      <div className=" relative w-[800px] h-[30rem] perspective-500 preserve-3d">
+      <div className="perspective-500 preserve-3d relative h-[30rem] w-[800px]">
         <button
-          className=" text-gray-600 text-[5rem] absolute top-[50%] z-2 cursor-pointer select-none  transform -translate-x-[270px] -translate-y-1/2"
+          className="z-2 absolute top-[50%] -translate-x-[270px] -translate-y-1/2 transform cursor-pointer select-none text-[5rem] text-gray-600"
           onClick={handlePrev}
         >
           <TiChevronLeftOutline />
@@ -45,7 +45,7 @@ const Carousel = ({ children }: CarouselProps) => {
         {React.Children.map(children, (child, i) => (
           <div
             key={i}
-            className="absolute w-[100%] h-[100%] transform-complex filter-blur transition-all duration-300 ease-out"
+            className="transform-complex filter-blur absolute h-[100%] w-[100%] transition-all duration-300 ease-out"
             style={
               {
                 "--active": i === active ? 1 : 0,
@@ -64,7 +64,7 @@ const Carousel = ({ children }: CarouselProps) => {
         ))}
 
         <button
-          className="text-gray-600 text-[5rem] absolute top-[50%] z-2 cursor-pointer select-none bg-transparent border-transparent transform translate-x-[270px] -translate-y-1/2 right-0"
+          className="z-2 absolute right-0 top-[50%] -translate-y-1/2 translate-x-[270px] transform cursor-pointer select-none border-transparent bg-transparent text-[5rem] text-gray-600"
           onClick={handleNext}
         >
           <TiChevronRightOutline />

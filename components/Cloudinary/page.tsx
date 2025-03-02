@@ -3,14 +3,14 @@ import { CldUploadWidget } from "next-cloudinary";
 
 const Cloudinary = () => {
   return (
-    <div className="w-[500px] mx-auto flex flex-col">
+    <div className="mx-auto flex w-[500px] flex-col">
       <label htmlFor="">Image:</label>
       <CldUploadWidget uploadPreset="tshirt-uploads-unsigned">
         {({ open }) => {
           return (
             <button
               onClick={() => open()}
-              className="bg-indigo-500 rounded py-2 px-4 mb-4 text-white"
+              className="mb-4 rounded bg-indigo-500 px-4 py-2 text-white"
             >
               Upload an Image
             </button>

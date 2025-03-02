@@ -12,7 +12,7 @@ const page = async ({ params }: ParamsProps) => {
   return (
     <>
       <div className={`${!slider && "hidden"}`}>
-        <h2 className="h2-bold text-dark_light900 text-center my-10">
+        <h2 className="h2-bold text-dark_light900 my-10 text-center">
           Edit Slider
         </h2>
         <div>
@@ -20,7 +20,7 @@ const page = async ({ params }: ParamsProps) => {
         </div>
       </div>
       <div className={`${!colection && "hidden"}`}>
-        <h2 className="h2-bold text-dark_light900 text-center my-10">
+        <h2 className="h2-bold text-dark_light900 my-10 text-center">
           Edit Colection
         </h2>
         <div>

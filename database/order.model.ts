@@ -25,7 +25,7 @@ const ArticleSchema = new Schema(
     price: { type: Number, required: true },
     quantity: { type: Number, required: true },
   },
-  { _id: false }
+  { _id: false },
 );
 
 const OrderSchema = new Schema({

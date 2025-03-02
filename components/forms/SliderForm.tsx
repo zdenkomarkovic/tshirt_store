@@ -98,7 +98,7 @@ const SliderForm = ({ type, sliderDetails }: Props) => {
   return (
     <>
       <button
-        className={` p-2 m-8 text-center primary-gradient text-light-900 rounded-lg ${type && "hidden"} `}
+        className={`primary-gradient m-8 rounded-lg p-2 text-center text-light-900 ${type && "hidden"} `}
         onClick={() => setIsHidden((prev) => !prev)}
       >
         {isHidden ? "Create Slide" : "Hide form"}
@@ -107,7 +107,7 @@ const SliderForm = ({ type, sliderDetails }: Props) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex  flex-col gap-5 w-[900px] border p-10 rounded-lg mx-auto"
+            className="mx-auto flex w-[900px] flex-col gap-5 rounded-lg border p-10"
           >
             <FormField
               control={form.control}

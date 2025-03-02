@@ -13,7 +13,7 @@ const page = async ({ params }: ParamsProps) => {
   return (
     <>
       {" "}
-      <h2 className="h2-bold text-dark_light900 text-center my-10">
+      <h2 className="h2-bold text-dark_light900 my-10 text-center">
         Edit Product
       </h2>
       <div>

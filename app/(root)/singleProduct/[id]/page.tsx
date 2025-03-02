@@ -13,19 +13,19 @@ const page = async ({ params }: ParamsProps) => {
 
   return (
     <div className="container">
-      <div className="flex my-16 gap-20 items-start">
+      <div className="my-16 flex items-start gap-20">
         <Image
           src={result?.image}
           width={550}
           height={550}
           alt="product-picture"
         />
-        <div className=" flex flex-col gap-8 ">
-          <h2 className="text-[40px] font-bold primary-text-gradient py-[50px]">
+        <div className="flex flex-col gap-8">
+          <h2 className="primary-text-gradient py-[50px] text-[40px] font-bold">
             {result?.title}
           </h2>
           <h3>{result?.features}</h3>
-          <h3 className="text-[30px] font-bold primary-text-gradient">
+          <h3 className="primary-text-gradient text-[30px] font-bold">
             {formattedPrice} RSD
           </h3>
 

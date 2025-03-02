@@ -11,7 +11,7 @@ const page = async () => {
   const visibleComponents = (await getVisibility()) || [];
   const slider = visibleComponents.find((item: any) => item.title === "Slider");
   const colections = visibleComponents.find(
-    (item: any) => item.title === "Colections"
+    (item: any) => item.title === "Colections",
   );
 
   return (
@@ -20,7 +20,7 @@ const page = async () => {
         <VisibilityForm />
       </div>
       <div className="mt-14">
-        <div className="flex border-y-2 gap-10 ">
+        <div className="flex gap-10 border-y-2">
           {" "}
           <p>{slider.title} </p>{" "}
           <VisibilityAction
@@ -39,7 +39,7 @@ const page = async () => {
         </div>
       </div>
       <div className="mt-14">
-        <div className="flex border-y-2 gap-10 ">
+        <div className="flex gap-10 border-y-2">
           {" "}
           <p>{colections.title} </p>{" "}
           <VisibilityAction

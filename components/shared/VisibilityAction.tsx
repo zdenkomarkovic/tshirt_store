@@ -40,7 +40,7 @@ const VisibilityAction = ({ type, itemId, visibility }: Props) => {
   return (
     <>
       <Switch
-        className={`primary-gradient scale-90 `}
+        className={`primary-gradient scale-90`}
         checked={visibility}
         onClick={handleClick}
       />

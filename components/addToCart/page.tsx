@@ -25,17 +25,17 @@ const AddToCart = ({ productId }: Params) => {
   };
 
   return (
-    <div className="flex items-center w-[280px] justify-between text-[20px] font-bold">
-      <div className=" flex items-center bg-slate-50 w-[120px] justify-between rounded-lg ">
+    <div className="flex w-[280px] items-center justify-between text-[20px] font-bold">
+      <div className="flex w-[120px] items-center justify-between rounded-lg bg-slate-50">
         <span
-          className="px-4 py-[8px] cursor-pointer rounded-l-lg hover:bg-slate-200 "
+          className="cursor-pointer rounded-l-lg px-4 py-[8px] hover:bg-slate-200"
           onClick={() => quantity > 1 && setQuantity(quantity - 1)}
         >
           -
         </span>
         <span className="">{quantity}</span>
         <span
-          className="px-4 py-[8px] rounded-r-lg hover:bg-slate-200 cursor-pointer"
+          className="cursor-pointer rounded-r-lg px-4 py-[8px] hover:bg-slate-200"
           onClick={() => setQuantity(quantity + 1)}
         >
           +
@@ -43,7 +43,7 @@ const AddToCart = ({ productId }: Params) => {
       </div>
       <button
         onClick={handleAddToCart}
-        className="primary-gradient rounded-lg text-light-900 px-4 py-2 hover:scale-110"
+        className="primary-gradient rounded-lg px-4 py-2 text-light-900 hover:scale-110"
       >
         Add to cart
       </button>

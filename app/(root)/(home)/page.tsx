@@ -13,7 +13,7 @@ const Home = async () => {
   const visibleComponents = (await getVisibility()) || [];
   const slider = visibleComponents.find((item) => item.title === "Slider");
   const colection = visibleComponents.find(
-    (item) => item.title === "Colections"
+    (item) => item.title === "Colections",
   );
   const filter = "mostViewed";
   const products = (await getProducts({ filter })) || [];
@@ -22,7 +22,7 @@ const Home = async () => {
   return (
     <div className="container">
       <div
-        className={` border-b-4 border-primary-100 py-16 w-full h-full flex items-center justify-center overflow-hidden ${slider.hidden && "hidden"}`}
+        className={`flex h-full w-full items-center justify-center overflow-hidden border-b-4 border-primary-100 py-16 ${slider.hidden && "hidden"}`}
       >
         {" "}
         <Carousel>
@@ -38,7 +38,7 @@ const Home = async () => {
         </Carousel>
       </div>
       <div
-        className={` border-b-4 border-primary-100  py-16 w-full h-full grid grid-cols-3 gap-0 items-center justify-start px-[65px]  ${colection.hidden && "hidden"}`}
+        className={`grid h-full w-full grid-cols-3 items-center justify-start gap-0 border-b-4 border-primary-100 px-[65px] py-16 ${colection.hidden && "hidden"}`}
       >
         {colections.map((item) => {
           return (
@@ -52,11 +52,11 @@ const Home = async () => {
           );
         })}
       </div>
-      <div className={` border-b-4 border-primary-100  py-16 w-full h-full  `}>
+      <div className={`h-full w-full border-b-4 border-primary-100 py-16`}>
         <h2 className="h1-bold pb-16 text-center text-primary-500">
           Najcesce gledano
         </h2>
-        <div className="grid grid-cols-3 gap-0 items-center justify-start px-[65px]">
+        <div className="grid grid-cols-3 items-center justify-start gap-0 px-[65px]">
           {visibleProducts.length > 0 &&
             visibleProducts.slice(0, 3).map((product) => (
               <div key={product._id}>

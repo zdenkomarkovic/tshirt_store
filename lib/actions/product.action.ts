@@ -180,7 +180,7 @@ export async function getProductById(params: GetProductByIdParams) {
       {
         $inc: { views: 1 },
       },
-      { new: true }
+      { new: true },
     );
     if (!product) throw new Error("Product not found");
     return product;

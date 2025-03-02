@@ -8,7 +8,7 @@ const page = async () => {
   const savedTags = await getTags();
   return (
     <>
-      <div className="py-20 ">
+      <div className="py-20">
         <ProductForm
           categories={JSON.stringify(categories)}
           savedTags={JSON.stringify(savedTags)}

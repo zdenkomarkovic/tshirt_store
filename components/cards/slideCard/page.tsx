@@ -12,14 +12,14 @@ const SlideCard = ({ picture, title, subtitle, link }: SlideProps) => {
   return (
     <>
       <Link href={link || "/"}>
-        <div className="relative w-[800px] h-[480px] rounded-lg text-center overflow-hidden">
+        <div className="relative h-[480px] w-[800px] overflow-hidden rounded-lg text-center">
           <img
             src={picture}
             alt=""
-            className="hover:scale-110 w-[800px] h-[480px]"
+            className="h-[480px] w-[800px] hover:scale-110"
           />
-          <div className="absolute bottom-0  primary-gradient-opacity w-full h-[70px]"></div>
-          <div className="absolute  flex flex-col align-middle items-center justify-center text-nowrap bottom-0 left-1/2 transform translate-x-[-50%] h-[70px] hover:scale-110 ">
+          <div className="primary-gradient-opacity absolute bottom-0 h-[70px] w-full"></div>
+          <div className="absolute bottom-0 left-1/2 flex h-[70px] translate-x-[-50%] transform flex-col items-center justify-center text-nowrap align-middle hover:scale-110">
             <h2 className="h2-bold text-white">{title}</h2>
             <h6 className="text-white">{subtitle}</h6>
           </div>
