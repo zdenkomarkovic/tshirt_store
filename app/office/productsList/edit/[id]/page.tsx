@@ -17,9 +17,9 @@ const page = async ({ params }: ParamsProps) => {
       <div>
         <ProductForm
           type="Edit"
-          productDetails={JSON.stringify(result)}
-          categories={JSON.stringify(categories)}
-          savedTags={JSON.stringify(savedTags)}
+          productDetails={result}
+          categories={categories}
+          savedTags={savedTags}
         />
       </div>
     </>

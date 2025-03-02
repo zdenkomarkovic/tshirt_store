@@ -183,7 +183,10 @@ export async function getProductById(params: GetProductByIdParams) {
       { new: true },
     );
     if (!product) throw new Error("Product not found");
-    return product;
+    return {
+      ...product.toObject(), // Pretvori proizvod u plain JavaScript objekat
+      _id: product._id.toString(), // Konvertujte _id u string
+    };
   } catch (error) {
     console.error("Error fetching product:", error);
     throw error;
