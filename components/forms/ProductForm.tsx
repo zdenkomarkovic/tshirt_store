@@ -46,8 +46,8 @@ import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover";
 interface Props {
   type?: string;
   productDetails?: string;
-  categories: string;
-  savedTags: string;
+  categories: string; // JSON string koji će se parsirati
+  savedTags: string; // JSON string koji će se parsirati
 }
 
 const ProductForm = ({
@@ -67,12 +67,21 @@ const ProductForm = ({
 
   const parsedProductDetails =
     productDetails && JSON.parse(productDetails || "");
-  const parsedTags = JSON.parse(savedTags || "");
+  let parsedTags = [];
+  try {
+    parsedTags = JSON.parse(savedTags || "[]");
+  } catch (error) {
+    console.error("Error parsing savedTags:", error);
+  }
 
   const groupedTags = parsedProductDetails?.tags.map((tag: any) => tag.title);
 
-  const parsedCategories = JSON.parse(categories || "");
-
+  let parsedCategories = [];
+  try {
+    parsedCategories = JSON.parse(categories || "[]");
+  } catch (error) {
+    console.error("Error parsing categories:", error);
+  }
   const form = useForm<z.infer<typeof ProductSchema>>({
     resolver: zodResolver(ProductSchema),
     defaultValues: {
