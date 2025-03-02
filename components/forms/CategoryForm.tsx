@@ -75,10 +75,10 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
           const parsedImage = await FileParser(values.image);
-          if (parsedImage && parsedImage instanceof File) {
-            processedValues.image = [parsedImage]; // Postavi kao niz
+          if (parsedImage && typeof parsedImage === "string") {
+            processedValues.image = [parsedImage]; // Postavi URL ili putanju kao niz
           } else {
-            processedValues.image = []; // Ili undefined, ako želiš da bude prazno
+            processedValues.image = []; // Ako nema slike, postavi prazno
           }
           processedValues.linked = processedValues.linked || "";
           await editCategory({
@@ -94,10 +94,10 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         } else {
           const processedValues = { ...values };
           const parsedImage = await FileParser(values.image);
-          if (parsedImage && parsedImage instanceof File) {
-            processedValues.image = [parsedImage]; // Postavi kao niz
+          if (parsedImage && typeof parsedImage === "string") {
+            processedValues.image = [parsedImage]; // Postavi URL ili putanju kao niz
           } else {
-            processedValues.image = []; // Ili undefined, ako želiš da bude prazno
+            processedValues.image = []; // Ako nema slike, postavi prazno
           }
           processedValues.linked = processedValues.linked || "";
 
