@@ -40,6 +40,7 @@ interface Props {
 //   linked: string;
 //   description: string;
 // }
+// t
 const CategoryForm = ({ type, categoryDetails }: Props) => {
   const editorRef = useRef(null);
   const [isSubmiting, setIsSubmiting] = useState(false);
@@ -56,7 +57,9 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
     defaultValues: {
       title: parsedCategoryDetails?.title || "",
       linked: parsedCategoryDetails?.linked || "",
-      image: parsedCategoryDetails?.image || "",
+      image: Array.isArray(parsedCategoryDetails?.image)
+        ? parsedCategoryDetails.image
+        : [],
       description: parsedCategoryDetails?.description || "",
     },
   });
@@ -80,12 +83,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
           const parsedImage = await FileParser(values.image);
-          if (typeof parsedImage === "string") {
-            // Ako je parsedImage string (base64 kodirana slika), postavi ga u niz
-            processedValues.image = [parsedImage];
-          } else {
-            processedValues.image = []; // Ako nije string, postavi prazno
-          }
+          processedValues.image = Array.isArray(parsedImage)
+            ? parsedImage
+            : parsedImage
+              ? [parsedImage]
+              : [];
           processedValues.linked = processedValues.linked || "";
           await editCategory({
             categoryId: parsedCategoryDetails._id,
@@ -100,11 +102,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         } else {
           const processedValues = { ...values };
           const parsedImage = await FileParser(values.image);
-          if (parsedImage && typeof parsedImage === "string") {
-            processedValues.image = [parsedImage]; // Postavi URL ili putanju kao niz
-          } else {
-            processedValues.image = []; // Ako nema slike, postavi prazno
-          }
+          processedValues.image = Array.isArray(parsedImage)
+            ? parsedImage
+            : parsedImage
+              ? [parsedImage]
+              : [];
           processedValues.linked = processedValues.linked || "";
 
           await createCategory({
