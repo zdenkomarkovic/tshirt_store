@@ -46,8 +46,8 @@ import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover";
 interface Props {
   type?: string;
   productDetails?: string;
-  categories: string; // JSON string koji će se parsirati
-  savedTags: string; // JSON string koji će se parsirati
+  categories: string[]; // JSON string koji će se parsirati
+  savedTags: string[]; // JSON string koji će se parsirati
 }
 
 const ProductForm = ({
