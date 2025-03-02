@@ -46,15 +46,18 @@ const Carousel = ({ children }: CarouselProps) => {
           <div
             key={i}
             className="absolute w-[100%] h-[100%] transform-complex filter-blur transition-all duration-300 ease-out"
-            style={{
-              "--active": i === active ? 1 : 0,
-              "--offset": (active - i) / 3,
-              "--direction": Math.sign(active - i),
-              "--abs-offset": Math.abs(active - i) / 3,
-              "pointer-events": active === i ? "auto" : "none",
-              opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
-              display: Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block",
-            }}
+            style={
+              {
+                "--active": i === active ? 1 : 0,
+                "--offset": (active - i) / 3,
+                "--direction": Math.sign(active - i),
+                "--abs-offset": Math.abs(active - i) / 3,
+                "pointer-events": active === i ? "auto" : "none",
+                opacity: Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1",
+                display:
+                  Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block",
+              } as React.CSSProperties
+            }
           >
             {child}
           </div>
