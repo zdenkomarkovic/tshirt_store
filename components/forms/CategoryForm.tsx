@@ -93,7 +93,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
               ),
             );
           } else if (values.image instanceof File) {
-            parsedImage = [await FileParser(values.image)];
+            parsedImage = [(await FileParser(values.image)) as string];
           } else {
             parsedImage =
               typeof values.image === "string" ? [values.image] : [];
@@ -122,7 +122,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
               ),
             );
           } else if (values.image instanceof File) {
-            parsedImage = [await FileParser(values.image)];
+            parsedImage = [(await FileParser(values.image)) as string];
           } else {
             parsedImage =
               typeof values.image === "string" ? [values.image] : [];
