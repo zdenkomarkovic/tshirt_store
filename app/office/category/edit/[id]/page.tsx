@@ -8,9 +8,7 @@ const page = async ({ params }: ParamsProps) => {
 
   return (
     <>
-      <h2 className="h2-bold text-dark_light900 my-10 text-center">
-        Edit Category
-      </h2>
+      <h2 className="h2-bold my-10 text-center text-gray-900">Edit Category</h2>
       <div>
         <CategoryForm type="Edit" categoryDetails={JSON.stringify(result)} />
       </div>

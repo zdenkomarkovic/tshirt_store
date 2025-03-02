@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "@/node_modules/next/image";
 import { useRouter } from "@/node_modules/next/navigation";
 import React from "react";
 
@@ -21,8 +22,10 @@ const Card = ({ picture, title, price, itemId }: ProductProps) => {
     <div onClick={singleProduct} className=" ">
       <div className="flex flex-col gap-3">
         <div className="overflow-hidden rounded-md">
-          <img
+          <Image
             src={picture}
+            width={500}
+            height={500}
             alt="product-picture"
             className="hover:scale-110"
           />
