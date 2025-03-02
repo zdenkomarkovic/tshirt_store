@@ -17,7 +17,7 @@ const page = async () => {
               title={product.title}
               price={product.price}
               itemId={JSON.stringify(product.id)}
-              views={product.discount}
+              discount={product.discount}
             />
           </div>
         ))

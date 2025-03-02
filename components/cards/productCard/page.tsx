@@ -8,6 +8,7 @@ interface ProductProps {
   title: string;
   price: number;
   itemId: string;
+  discount?: number;
 }
 
 const Card = ({ picture, title, price, itemId }: ProductProps) => {
