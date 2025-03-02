@@ -61,10 +61,13 @@ const BrandForm = ({ type, brandDetails }: Props) => {
           processedValues.image = (await FileParser(values.image)) as
             | File
             | undefined;
+          const imageArray = processedValues.image
+            ? [processedValues.image]
+            : [];
           await editBrand({
             brandId: parsedBrandDetails._id,
             title: values.title,
-            image: processedValues.image,
+            image: imageArray,
             path: pathname,
           });
           setUpdateImage(false);
@@ -74,10 +77,12 @@ const BrandForm = ({ type, brandDetails }: Props) => {
           processedValues.image = (await FileParser(values.image)) as
             | File
             | undefined;
-
+          const imageArray = processedValues.image
+            ? [processedValues.image]
+            : [];
           await createBrand({
             title: values.title,
-            image: processedValues.image,
+            image: imageArray,
             path: pathname,
           });
 
