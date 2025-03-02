@@ -67,59 +67,48 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
   async function onSubmit(values: z.infer<typeof CategorySchema>) {
     setIsSubmiting(true);
     try {
-      if (type === "Edit" && !updateImage) {
-        const processedValues = { ...values };
-        processedValues.linked = processedValues.linked || "";
+      let processedValues = { ...values, linked: values.linked || "" };
+
+      if (updateImage) {
+        const parsedImage = await FileParser(values.image);
+
+        // Osiguraj da je parsedImage validan tip (string | File)[]
+        if (parsedImage instanceof File) {
+          processedValues.image = [parsedImage];
+        } else if (typeof parsedImage === "string") {
+          processedValues.image = [parsedImage];
+        } else {
+          processedValues.image = [];
+        }
+      } else {
+        processedValues.image = Array.isArray(values.image)
+          ? values.image
+          : values.image
+          ? [values.image]
+          : [];
+      }
+
+      if (type === "Edit") {
         await editCategory({
           categoryId: parsedCategoryDetails._id,
           title: values.title,
           linked: processedValues.linked,
-          image: values.image ? [values.image] : [],
+          image: processedValues.image,
           description: values.description,
           path: pathname,
         });
-        router.push("/office/category");
+        setUpdateImage(false);
       } else {
-        if (type === "Edit" && updateImage) {
-          const processedValues = { ...values };
-          const parsedImage = await FileParser(values.image);
-          processedValues.image = Array.isArray(parsedImage)
-            ? parsedImage
-            : parsedImage
-              ? [parsedImage]
-              : [];
-          processedValues.linked = processedValues.linked || "";
-          await editCategory({
-            categoryId: parsedCategoryDetails._id,
-            title: values.title,
-            linked: processedValues.linked,
-            image: processedValues.image,
-            description: values.description,
-            path: pathname,
-          });
-          setUpdateImage(false);
-          router.push("/office/category");
-        } else {
-          const processedValues = { ...values };
-          const parsedImage = await FileParser(values.image);
-          processedValues.image = Array.isArray(parsedImage)
-            ? parsedImage
-            : parsedImage
-              ? [parsedImage]
-              : [];
-          processedValues.linked = processedValues.linked || "";
-
-          await createCategory({
-            title: values.title,
-            linked: processedValues.linked,
-            image: processedValues.image,
-            description: values.description,
-            path: pathname,
-          });
-
-          router.push("/office/category");
-        }
+        await createCategory({
+          title: values.title,
+          linked: processedValues.linked,
+          image: processedValues.image,
+          description: values.description,
+          path: pathname,
+        });
       }
+
+      router.push("/office/category");
     } catch (error) {
       console.log(error);
     } finally {
@@ -127,6 +116,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
       form.reset();
     }
   }
+};
   return (
     <>
       <button
