@@ -7,8 +7,8 @@ import React from "react";
 
 const page = async ({ params }: ParamsProps) => {
   const result = await getProductById({ productId: params.id });
-  const categories = (await getCategories()) || [];
-  const savedTags = (await getTags()) || [];
+  const categories = await getCategories() || [];
+  const savedTags = await getTags() || [];
 
   return (
     <>
