@@ -6,13 +6,13 @@ import React from "react";
 const page = async () => {
   const categories = await getCategories();
   const savedTags = await getTags();
+  const safeCategories = categories || [];
+  const safeSavedTags = savedTags || [];
+
   return (
     <>
       <div className="py-20">
-        <ProductForm
-          categories={JSON.stringify(categories)}
-          savedTags={JSON.stringify(savedTags)}
-        />
+        <ProductForm categories={safeCategories} savedTags={safeSavedTags} />
       </div>
     </>
   );
