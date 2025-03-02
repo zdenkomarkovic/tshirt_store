@@ -85,12 +85,25 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
       } else {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
-          const parsedImage = await FileParser(values.image as File | File[]);
+          let parsedImage;
+          if (Array.isArray(values.image)) {
+            parsedImage = await Promise.all(
+              values.image.map(async (img) =>
+                img instanceof File ? await FileParser(img) : img,
+              ),
+            );
+          } else if (values.image instanceof File) {
+            parsedImage = await FileParser(values.image);
+          } else {
+            parsedImage = values.image;
+          }
+
           processedValues.image = Array.isArray(parsedImage)
             ? parsedImage
             : parsedImage
               ? [parsedImage]
               : [];
+
           processedValues.linked = processedValues.linked || "";
           await editCategory({
             categoryId: parsedCategoryDetails._id,
@@ -104,7 +117,19 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
           router.push("/office/category");
         } else {
           const processedValues = { ...values };
-          const parsedImage = await FileParser(values.image as File | File[]);
+          let parsedImage;
+          if (Array.isArray(values.image)) {
+            parsedImage = await Promise.all(
+              values.image.map(async (img) =>
+                img instanceof File ? await FileParser(img) : img,
+              ),
+            );
+          } else if (values.image instanceof File) {
+            parsedImage = await FileParser(values.image);
+          } else {
+            parsedImage = values.image;
+          }
+
           processedValues.image = Array.isArray(parsedImage)
             ? parsedImage
             : parsedImage
