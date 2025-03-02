@@ -74,7 +74,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
       } else {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
-          processedValues.image = await FileParser(values.image);
+          processedValues.image = (await FileParser(values.image)) || [];
           processedValues.linked = processedValues.linked || "";
           await editCategory({
             categoryId: parsedCategoryDetails._id,
@@ -88,7 +88,7 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
           router.push("/office/category");
         } else {
           const processedValues = { ...values };
-          processedValues.image = await FileParser(values.image);
+          processedValues.image = (await FileParser(values.image)) || [];
           processedValues.linked = processedValues.linked || "";
 
           await createCategory({
