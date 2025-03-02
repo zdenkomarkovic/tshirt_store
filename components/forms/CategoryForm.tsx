@@ -60,10 +60,12 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
     setIsSubmiting(true);
     try {
       if (type === "Edit" && !updateImage) {
+        const processedValues = { ...values };
+        processedValues.linked = processedValues.linked || "";
         await editCategory({
           categoryId: parsedCategoryDetails._id,
           title: values.title,
-          linked: values.linked,
+          linked: processedValues.linked,
           image: values.image,
           description: values.description,
           path: pathname,
@@ -73,10 +75,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         if (type === "Edit" && updateImage) {
           const processedValues = { ...values };
           processedValues.image = await FileParser(values.image);
+          processedValues.linked = processedValues.linked || "";
           await editCategory({
             categoryId: parsedCategoryDetails._id,
             title: values.title,
-            linked: values.linked,
+            linked: processedValues.linked,
             image: processedValues.image,
             description: values.description,
             path: pathname,
@@ -86,10 +89,11 @@ const CategoryForm = ({ type, categoryDetails }: Props) => {
         } else {
           const processedValues = { ...values };
           processedValues.image = await FileParser(values.image);
+          processedValues.linked = processedValues.linked || "";
 
           await createCategory({
             title: values.title,
-            linked: values.linked,
+            linked: processedValues.linked,
             image: processedValues.image,
             description: values.description,
             path: pathname,
