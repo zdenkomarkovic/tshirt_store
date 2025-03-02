@@ -95,8 +95,8 @@ const UploadProduct = () => {
               alt="Preview"
             />
           )}
+          {typeof preview === "string" && <img src={preview} alt="preview" />}
 
-          <img src={preview} alt="" />
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {isDragActive ? (
